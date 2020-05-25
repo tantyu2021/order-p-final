@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>FOOD DELIVERY. Bootstrap - hamburger menu</title>
+    <title>FOOD DELIVERY. Pizza Order in Bootstrap</title>
 <!-- font awesome 521-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
@@ -25,6 +25,9 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+span {color: red;}
+.green {color: green;}
+.right {float: right;}
        /* .sticky {
   position: -webkit-sticky;
   position: sticky;
@@ -38,7 +41,7 @@
 
 
 <body class="bg-dark">
-<img src="imagesFood/foodPizza4.jpg" alt="pizza" class="img-fluid headerPic">
+<!-- <img src="imagesFood/foodPizza4.jpg" alt="pizza" class="img-fluid headerPic"> -->
 <!-- <nav class="navbar bg-dark navbar-dark navbar-expand-sm fixed-top"> -->
 <nav class="navbar  navbar-dark navbar-expand-sm fixed-top">
     <div class="container">
@@ -69,24 +72,31 @@
 <article class="col-md-4 "  >
     <hr><hr>
 
+    <!-- <div class="sticky" style="position: fixed; top: 90px; z-index: 2; width: 25%; height: auto;"> -->
     <div class="sticky" style="position: fixed; top: 90px; z-index: 2; width: 25%; height: auto;">
 <!--Scrollspy-->
 <div id="scrollspy">
 
+<div class="form-group" >  
+    <input type="text" class="form-control" id="price" placeholder="Price: $0" name="price" >  </div>
+    <br>
 <!--523- textearea 522 -https://mdbootstrap.com/docs/jquery/forms/textarea/ -->
 <div class="md-form">
   <textarea id="form7" class="md-textarea form-control" rows="3">Your order:
   </textarea>
   <label for="form7">Material textarea</label>
   </div>
-<!-- 523 --> <div style="background-color: #fff; width: 100%; border-radius: 4px;">
+
+<!-- 523 -->
+ <div style="background-color: #fff; width: 100%; border-radius: 4px;">
   <p>Your Order: <br>
   <span id="yourOrder1">Empty</span></p>
   <!-- <table id="pizza_info" class=" bg-light "></table> -->
-<!-- 524 -->
-<!-- <p id="nReg"></p>
-<p id="aReg"></p>
-<p id="cReg"></p> -->
+<!-- <h5 id="yourOrder">&nbsp;</h5> -->
+<table id="pizza_info"></table>
+<!-- fromlab13-524 -->
+<h5 id="registration_header">&nbsp;</h5>
+<table id="registration_info"></table>
 
   <!-- <h2 id="table_title">&nbsp;</h2>
   <table id="table_info"></table> -->
@@ -111,7 +121,7 @@
 <article class="col-md-8  bg-dark text-light">
 
 <div >
-    <hr>
+    <hr><hr>
 <h3  class="display-5 text-secondary" style="border-bottom: 2px solid #777;">Easy Pizzy</h3><hr>
 </div>   
  <!-- ====jumbotron======================= --> 
@@ -122,19 +132,19 @@
 <!-- ====/jumbotron======================= -->
 
 <p>Please order your pizza by following these steps:</p>
-<p><i class="far fa-thumbs-down"></i>&nbsp;Indicates that the information entered is invalid or incomplete</p>
-<p><i class="far fa-thumbs-up"></i> Gives you a thumbsup for your good job</p><br>
+<p><span><i class="far fa-thumbs-down"></i></span>&nbsp;Indicates that the information entered is invalid or incomplete</p>
+<p><i class="far fa-thumbs-up green" ></i> Gives you a thumbsup for your good job</p><br>
 
 
 <!-- ==== start FORM ============================= -->
 <h3>Personal Details</h3>
 <!-- //////////////////////////////////////// action="payment522.html" method="GET"
 -->
-<form  id="buildPizza" class="needs-validation" novalidate>
-
+<!-- <form  id="buildPizza" class="needs-validation" novalidate> -->
+<form action="register_account.html" method="get" id="registration_form">
     <div class="form-group">
         <label for="uname">Name</label>
-        <span><i class="far fa-thumbs-down "></i></span>
+        <span><i class="far fa-thumbs-down right"></i></span>
         <input type="text" class="form-control" id="uname" placeholder="Enter your name" name="uname" required>
         <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -143,15 +153,16 @@
     <!-- Bootstrap Select List; <div class="form-group">; selected -->
 <div class="form-group">
     <label for="address-type">Address Type:</label>
+    <span><i class="far fa-thumbs-down right"></i></span>
     <select class="form-control" id="address-type">
       <option value="">- Select Address Type here...-</option>
-      <option>1 - house</option>
-      <option>2 - apartment</option>
-      <option>3 - business</option>
-      <option>4 - campus</option>
-      <option>5 - hotel</option>
-      <option>6 - dormatory</option>
-      <option id="other">7 - other</option>
+      <option>house</option>
+      <option>apartment</option>
+      <option>business</option>
+      <option>campus</option>
+      <option>hotel</option>
+      <option>dormatory</option>
+      <option id="other">other</option>
     </select>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
     <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -160,10 +171,17 @@
 
 <div class="form-group">
     <label for="uaddress">Street Address (Format: 123 Main Street)</label>
+    <span><i class="far fa-thumbs-down right"></i></span>
     <input type="text" class="form-control" id="uaddress" placeholder="Enter your address" name="uaddress" required>
     <div class="valid-feedback">Valid. <i class="far fa-thumbs-up"></i></div>
     <div class="invalid-feedback">Please fill out this field. <i class="far fa-thumbs-down "></i></div>
 </div>
+
+<div class="form-group">
+    <label for="uapartment">Apartment Number (optional)</label>
+    <input type="text" class="form-control" id="uapartment" placeholder="" name="uapartment">
+</div>
+
 
 <div class="form-group">
     <label for="room-number">Suite or Room Number (optional)</label>
@@ -174,13 +192,16 @@
 
 <div class="form-group">
     <label for="ucity">City</label>
-    <input type="text" class="form-control" id="ucity" placeholder="City" name="ucity" required>
+    <span><i class="far fa-thumbs-down right"></i></span>
+    <input type="text" class="form-control" id="ucity" placeholder="City" name="ucity" >
+    <!-- required -->
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
 </div>
 
 <div class="form-group">
     <label for="ustate">State (Format:CA)</label>
+    <span><i class="far fa-thumbs-down right"></i></span>
     <input type="text" class="form-control" id="ustate" placeholder="state" name="ustate" required>
      <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -188,6 +209,7 @@
 
 <div class="form-group">
     <label for="uzip">Zip Code (Format:12345 or 12345-1234)</label>
+    <span><i class="far fa-thumbs-down right"></i></span>
     <input type="text" class="form-control" id="uzip" placeholder="zip code" name="uzip" required>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -195,6 +217,7 @@
 
 <div class="form-group">
     <label for="uphone">Phone Number Format: (619) 123-4567</label>
+    <span><i class="far fa-thumbs-down right"></i></span>
     <input type="text" class="form-control" id="uphone" placeholder="... ...-...." name="uphone" required>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -202,6 +225,7 @@
 
 <div class="form-group">
     <label for="uemail">Email (hungryguy@pizzafuns.com)</label>
+    <span><i class="far fa-thumbs-down right"></i></span>
     <input type="text" class="form-control mb-4" id="uemail" placeholder="Enter your email" name="uemail" required>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -214,6 +238,7 @@
 
 <div class="form-group">
     <label for="pizza-type">Type of dough</label>
+    <span><i class="far fa-thumbs-down right"></i></span>
     <select class="form-control" id="pizza-type">
         <option value="">- select a dough type here... -</option>
         <option>Hand Tossed</option>
@@ -244,9 +269,9 @@
 <label for="chees-type">Type of cheese:</label>
 <select class="form-control" id="chees-type">
     <option selected value="normal">Normal (no charge)</option>
-    <option value="light">Light (no charge)</option>
-    <option value="extra">Extra (+$2.99)</option>
-    <option value="double">Double (+3.99)</option>
+    <option>Light (no charge)</option>
+    <option>Extra (+$2.99)</option>
+    <option>Double (+3.99)</option>
 </select>
 <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
 <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -255,9 +280,9 @@
 <div class="form-group">
     <label for="sauce-type">Type of sause:</label>
     <select class="form-control" id="sauce-type">
-        <option selected value="regularTom">Regular Tomato (no charge)</option>
-        <option value="lightTom">Light Tomato(no charge)</option>
-        <option value="heartyTom">Hearty Tomato (+$2.99)
+        <option selected>Regular Tomato (no charge)</option>
+        <option>Light Tomato(no charge)</option>
+        <option >Hearty Tomato (+$2.99)
     </select>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
     <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -267,47 +292,47 @@
 <label for="topping">Topping $0.99 each:</label><br>
 <div class="form-check-inline">
     <label class="form-check-label">
-      <input type="checkbox" class="form-check-input" value="pepperoni" id="pepperoni">pepperoni
+      <input type="checkbox"   name="top-on" class="form-check-input" value="pepperoni" id="pepperoni">pepperoni
     </label>
 </div>
 <div class="form-check-inline">
     <label class="form-check-label">
-      <input type="checkbox" class="form-check-input" value="sausage" id="sausage">sausage
+      <input type="checkbox"   name="top-on" class="form-check-input" value="sausage" id="sausage">sausage
     </label>
 </div>
 <div class="form-check-inline">
     <label class="form-check-label">
-      <input type="checkbox" class="form-check-input" value="ham"  id="ham">ham
+      <input type="checkbox"   name="top-on" class="form-check-input" value="ham"  id="ham">ham
     </label>
 </div>
 <div class="form-check-inline">
     <label class="form-check-label">
-      <input type="checkbox" class="form-check-input" value="bacon" id="bacon">bacon
+      <input type="checkbox"   name="top-on" class="form-check-input" value="bacon" id="bacon">bacon
     </label>
 </div>
 <div class="form-check-inline">
     <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" value="salami" id="salami">salami
+        <input type="checkbox"   name="top-on" class="form-check-input" value="salami" id="salami">salami
     </label>
 </div>
 <div class="form-check-inline">
     <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" value="peppers" id="peppers">peppers
+        <input type="checkbox"   name="top-on" class="form-check-input" value="peppers" id="peppers">peppers
     </label>
 </div>
 <div class="form-check-inline">
     <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" value="olives"  id="olives">olives
+        <input type="checkbox"   name="top-on" class="form-check-input" value="olives"  id="olives">olives
     </label>
 </div>
 <div class="form-check-inline">
     <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" value="jalapenos" id="jalapenos">jalapenos
+        <input type="checkbox"   name="top-on" class="form-check-input" value="jalapenos" id="jalapenos">jalapenos
     </label>
 </div>
 <div class="form-check-inline">
     <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" value="mushrooms" id="mushrooms">mushrooms
+        <input type="checkbox"   name="top-on" class="form-check-input" value="mushrooms" id="mushrooms">mushrooms
     </label>
 </div>
 
@@ -315,37 +340,177 @@
 </div><!-- END: class="form-group col-10" -->
 
 
+<input type="button" class="btn btn-primary mb-4 mt-4   btn-block" id="register" value="Finished Building Pizza">
 
-
-<button type="submit" class="btn btn-primary mb-4 mt-4   btn-block" id="finished">Finished Building Pizza</button>    
+<!-- <button type="submit" class="btn btn-primary mb-4 mt-4   btn-block" id="finished">Finished Building Pizza</button>     -->
 </form>
 <!-- /form -->
 
-
+<script>
+    //from524
+    var $ = function (id) {
+        "use strict";
+        return window.document.getElementById(id);
+    };
+    
+    var processEntries = function () {
+        "use strict";
+        var header, html, required, msg, email, phone, country, contact, terms,
+        //524
+        name, addressType, address, roomNumber, city, state, zip, apartment,
+        pizzaType, pizzaSize, cheesType, sauceType, toppings;
+    
+        
+        header = "";
+        html = "";
+        required = "<span>Required</span>";
+        msg = "Table Info";
+    // msg = "Please complete all required fields.";
+        email = $("uemail").value;
+        phone = $("uphone").value;
+        // country = $("country").value;
+        //524
+        name = $('uname').value;
+        addressType = $('address-type').value;
+        address = $('uaddress').value;
+        apartment = $('uapartment').value;
+        roomNumber = $('room-number').value;
+        city = $('ucity').value;
+        state = $('ustate').value;
+        zip = $('uzip').value;
+    
+        //
+        // contact = "Text";
+        // if ($("email").checked) {
+        //     contact = "Email";
+        // } else if ($("none").checked) {
+        //     contact = "None";
+        // }
+        // terms = $("terms").checked;
+        
+        //Basic validation
+        if (email === "") {
+            email = required;
+            header = msg;
+        }
+        if (phone === "") {
+            phone = required;
+            header = msg;
+        }
+        // if (country === "") {
+        //     country = required;
+        //     header = msg;
+        // }
+        if (terms === false) {
+            terms = required;
+            header = msg;
+        }
+        //524
+        if (name === "") {
+            name = required;
+            header = msg;
+        }
+        if (addressType === "") {
+            addressType = required;
+            header = msg;
+        }
+        if (address === "") {
+            address = required;
+            header = msg;
+        }
+        if (city === "") {
+            city = required;
+            header = msg;
+        }
+        if (state === "") {
+            state = required;
+            header = msg;
+        }
+        if (zip === "") {
+            zip = required;
+            header = msg;
+        }
+        //
+     //524-pizza
+    pizzaType = $('pizza-type').value;
+    pizzaSize = $('pizza-size').value;
+    cheesType = $('chees-type').value;
+    sauceType = $('sauce-type').value;
+    //toppings = $('top-on').value;
+    
+    
+     if (pizzaType === "") {
+            pizzaType = required;
+            // header = msg;
+        }
+        if (pizzaSize === "") {
+            pizzaSize = required;
+            // header = msg;
+        }
+    
+    //524-pizzabuilding
+    html += "<tr><td>Dough Type:</td><td>" + pizzaType + "</td></tr>";
+            html += "<tr><td>Siza and Cost:</td><td>" + pizzaSize + "</td></tr>";
+            html += "<tr><td>Type of Chees:</td><td>" + cheesType + "</td></tr>";
+            html += "<tr><td>Type of Sauce:</td><td>" + sauceType + "</td></tr>";
+            // html += "<tr><td>Toppings: add each for $0.99</td><td>" + toppings + "</td></tr>";
+            // $("pizza_info").innerHTML = html;
+            // $("registration_form").submit();
+      
+    
+        $("registration_header").innerHTML = header;
+        if (header === msg) {
+            // html += "<tr><td>Country:</td><td>" + country + "</td></tr>";
+            // html += "<tr><td>Contact:</td><td>" + contact + "</td></tr>";
+            // html += "<tr><td>Terms:</td><td>" + terms + "</td></tr>";
+    //524
+    html += "<tr><td>Name:</td><td>" + name + "</td></tr>";
+    html += "<tr><td>Address Type:</td><td>" + addressType + "</td></tr>";
+    html += "<tr><td>Address:</td><td>" + address + "</td></tr>";
+    html += "<tr><td>Apartment:</td><td>" + apartment + "</td></tr>";
+    html += "<tr><td>Room Number:</td><td>" + roomNumber + "</td></tr>";
+    html += "<tr><td>City:</td><td>" + city + "</td></tr>";
+    html += "<tr><td>States:</td><td>" + state + "</td></tr>";
+    html += "<tr><td>Zip Code:</td><td>" + zip + "</td></tr>";
+    html += "<tr><td>Phone:</td><td>" + phone + "</td></tr>";
+    html += "<tr><td>Email:</td><td>" + email + "</td></tr>";
+    $("registration_info").innerHTML = html;
+        } else {
+            $("registration_form").submit();
+        }
+    };
+    
+    window.addEventListener("load", function () {
+        "use strict";
+        $("register").addEventListener("click", processEntries);
+        $("uname").focus();
+    });
+    </script>
+    
 
 
 
 
               <script>
-              // Disable form submissions if there are invalid fields
-              (function() {
-                'use strict';
-                window.addEventListener('load', function() {
-                  // Get the forms we want to add validation styles to
-                  var forms = document.getElementsByClassName('needs-validation');
-                  // Loop over them and prevent submission
-                  var validation = Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
-                        // Finished Building Pizza instead 'submit'
-                      if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                      }
-                      form.classList.add('was-validated');
-                    }, false);
-                  });
-                }, false);
-              })();
+            //   // Disable form submissions if there are invalid fields
+            //   (function() {
+            //     'use strict';
+            //     window.addEventListener('load', function() {
+            //       // Get the forms we want to add validation styles to
+            //       var forms = document.getElementsByClassName('needs-validation');
+            //       // Loop over them and prevent submission
+            //       var validation = Array.prototype.filter.call(forms, function(form) {
+            //         form.addEventListener('submit', function(event) {
+            //             // Finished Building Pizza instead 'submit'
+            //           if (form.checkValidity() === false) {
+            //             event.preventDefault();
+            //             event.stopPropagation();
+            //           }
+            //           form.classList.add('was-validated');
+            //         }, false);
+            //       });
+            //     }, false);
+            //   })();
               </script>
         </article> <!-- end rightSide article -->
     </div>
