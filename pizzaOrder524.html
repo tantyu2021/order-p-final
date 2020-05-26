@@ -83,13 +83,16 @@ span {color: red;}
 <!--523- textearea 522 -https://mdbootstrap.com/docs/jquery/forms/textarea/ -->
 <div class="md-form">
   <textarea id="form7" class="md-textarea form-control" rows="3">Your order:
+
+    
   </textarea>
   <label for="form7">Material textarea</label>
   </div>
+  <!-- <table id="textarea_info"></table> -->
 
 <!-- 523 -->
  <div style="background-color: #fff; width: 100%; border-radius: 4px;">
-  <p>Your Order: <br>
+  <p>Your Order: 
   <span id="yourOrder1">Empty</span></p>
   <!-- <table id="pizza_info" class=" bg-light "></table> -->
 <!-- <h5 id="yourOrder">&nbsp;</h5> -->
@@ -255,7 +258,9 @@ span {color: red;}
 
 <div class="form-group">
     <label for="pizza-size">Size and Cost:</label>
+    <span><i class="far fa-thumbs-down right"></i></span>
     <select class="form-control" id="pizza-size">
+        <option value="">- Select Pizza Size here...-</option>
         <option>large ($16.99)</option>
         <option>extralarge ($19.99)</option>
         <!-- <option>3</option>
@@ -268,7 +273,7 @@ span {color: red;}
 <div class="form-group">
 <label for="chees-type">Type of cheese:</label>
 <select class="form-control" id="chees-type">
-    <option selected value="normal">Normal (no charge)</option>
+    <option selected >Normal (no charge)</option>
     <option>Light (no charge)</option>
     <option>Extra (+$2.99)</option>
     <option>Double (+3.99)</option>
@@ -292,6 +297,7 @@ span {color: red;}
 <label for="topping">Topping $0.99 each:</label><br>
 <div class="form-check-inline">
     <label class="form-check-label">
+        <!-- name="top-on" -->
       <input type="checkbox"   name="top-on" class="form-check-input" value="pepperoni" id="pepperoni">pepperoni
     </label>
 </div>
@@ -358,7 +364,7 @@ span {color: red;}
         var header, html, required, msg, email, phone, country, contact, terms,
         //524
         name, addressType, address, roomNumber, city, state, zip, apartment,
-        pizzaType, pizzaSize, cheesType, sauceType, toppings;
+        pizzaType, pizzaSize, cheesType, sauceType, toppings, requiredT;
     
         
         header = "";
@@ -378,6 +384,7 @@ span {color: red;}
         city = $('ucity').value;
         state = $('ustate').value;
         zip = $('uzip').value;
+        requiredT = 'Required!!!'
     
         //
         // contact = "Text";
@@ -410,10 +417,19 @@ span {color: red;}
             name = required;
             header = msg;
         }
-        if (addressType === "") {
+        // if (addressType === "") {
+        //     addressType = required;
+        //     header = msg;
+        // }
+//525
+if (addressType === "") {
             addressType = required;
             header = msg;
-        }
+        } else if (addressType === "other"){
+var yourOtherAddressType =   prompt('Please enter your Address Type here:');
+addressType === yourOtherAddressType;
+        } 
+
         if (address === "") {
             address = required;
             header = msg;
@@ -436,9 +452,66 @@ span {color: red;}
     pizzaSize = $('pizza-size').value;
     cheesType = $('chees-type').value;
     sauceType = $('sauce-type').value;
-    //toppings = $('top-on').value;
+   // toppings = $('top-on').value;
+
+var costChees = 0;
+if (cheesType === "Light (no charge)" ) {
+costChees = 0;
+} else if (cheesType === "Normal (no charge)") {
+    costChees = 0;
+}else if (cheesType === "Extra (+$2.99)") {
+    costChees = 2.99;
+}else if (cheesType === "Double (+3.99)") {
+    costChees = 3.99;
+}
+
+var costSauce = 0;
+if (sauceType === "Light Tomato(no charge)" ) {
+costSauce = 0;
+} else if (sauceType === "Regular Tomato (no charge)") {
+    costSauce = 0;
+}else if (sauceType === "Hearty Tomato (+$2.99)") {
+    costSauce = 2.99;
+}
+//525checkb
+// var costTopping;
+// toppings;
+// if ($('top-on').checked) {
     
-    
+// }
+// // 519-topping-
+var toppingTypeCost = 0;
+if (toppings === "pepperoni") {
+    toppingTypeCost = 0.99;
+}   else if (toppings === "sausage") {
+    toppingTypeCost = 0.99;
+} else if (toppings === "ham") {
+    toppingTypeCost = 0.99;
+}else if (toppings === "bacon") {
+    toppingTypeCost = 0.99;
+}else if (toppings === "salami") {
+    toppingTypeCost = 0.99;
+}else if (toppings === "peppers") {
+    toppingTypeCost = 0.99;
+}else if (toppings === "olives") {
+    toppingTypeCost = 0.99;
+}else if (toppings === "jalapenos") {
+    toppingTypeCost = 0.99;
+}else if (toppings === "mushroom") {
+    toppingTypeCost = 0.99;
+}else if (toppings === "pinapple") {
+    toppingTypeCost = 0.99;
+}else if (toppings === "onion") {
+    toppingTypeCost = 0.99;
+}
+
+
+// console.log(toppingTypeCost);
+//var priceTotal = 0;
+var priceTotal = costChees + costSauce + toppingTypeCost;
+// $('price').val(priceTotal);
+// $("price").innerHTML = "$ " + priceTotal;
+
      if (pizzaType === "") {
             pizzaType = required;
             // header = msg;
@@ -447,10 +520,69 @@ span {color: red;}
             pizzaSize = required;
             // header = msg;
         }
-    
+
+
+// //525-checkboxes
+// // 519-topping-get the value of the //checked radio button
+// toppings = $('top-on').value;
+// for(var i = 0; i < toppings.length; i++) {
+//   if(toppings[i].checked == true) {
+//     toppingItem = toppings[i].value;
+//     console.log(toppingItem);
+//   }
+// }
+// // 519-topping-convert string value to numeric equivalent on shipping
+// var toppingTypeCost = 0;
+// switch(toppingItem) {
+// case 'pepperoni' :
+//   toppingTypeCost = 0.99;
+//   break;
+// case 'sausage':
+//   toppingTypeCost = 0.99;
+//   break;
+// case 'ham' :
+//   toppingTypeCost = 0.99;
+//   break;
+//   case 'bacon' :
+//   toppingTypeCost = 0.99;
+//   break;
+// case 'salami':
+//   toppingTypeCost = 0.99;
+//   break;
+// case 'peppers' :
+//   toppingTypeCost = 0.99;
+//   break;
+//   case 'olives' :
+//   toppingTypeCost = 0.99;
+//   break;
+// case 'jalapenos':
+//   toppingTypeCost = 0.99;
+//   break;
+// case 'mushroom' :
+//   toppingTypeCost = 0.99;
+//   break;
+//   case 'pinapple' :
+//   toppingTypeCost = 0.99;
+//   break;
+// case 'onion':
+//   toppingTypeCost = 0.99;
+//   break;
+// }
+// console.log(toppingTypeCost);
+
+// toppings = $('registration-form').top-on;
+//   // get the value of the checked btn
+//   for(var i = 0; i < toppings.length; i++) {
+//   if(toppings[i].checked == true) {
+//     toppingItems = toppings[i].value;
+//     console.log(toppingItems);
+//   }
+// }
+
+
     //524-pizzabuilding
     html += "<tr><td>Dough Type:</td><td>" + pizzaType + "</td></tr>";
-            html += "<tr><td>Siza and Cost:</td><td>" + pizzaSize + "</td></tr>";
+            html += "<tr><td>Size and Cost:</td><td>" + pizzaSize + "</td></tr>";
             html += "<tr><td>Type of Chees:</td><td>" + cheesType + "</td></tr>";
             html += "<tr><td>Type of Sauce:</td><td>" + sauceType + "</td></tr>";
             // html += "<tr><td>Toppings: add each for $0.99</td><td>" + toppings + "</td></tr>";
@@ -459,6 +591,22 @@ span {color: red;}
       
     
         $("registration_header").innerHTML = header;
+        // $("form7").innerHTML = header;
+
+        // $("form7").innerHTML = "Dough Type: " + pizzaType + "Size and Cost: " + pizzaSize  + "Type of Chees: " + cheesType + "Type of Sauce: " + sauceType;
+// $("form7").innerHTML = "Dough Type: " + pizzaType;
+// $("form7").innerHTML += "<tr><td>Size and Cost:</td><td>" + pizzaSize + "</td></tr>";
+// $("form7").innerHTML += "<tr><td>Type of Chees:</td><td>" + cheesType + "</td></tr>";
+// $("form7").innerHTML += "<tr><td>Type of Sauce:</td><td>" + sauceType + "</td></tr>";
+
+// $("price").value(priceTotal);
+//$("price").innerHTML = "$ " + priceTotal;
+        $("form7").innerHTML = "Dough Type: " + pizzaType;
+        $("form7").innerHTML += "$$$ " +  + priceTotal;
+        $("form7").innerHTML += " Size and Cost: " + pizzaSize ;
+        $("form7").innerHTML += " Type of Chees: " + cheesType ;
+        $("form7").innerHTML += " Type of Sauce: " + sauceType;
+        // + "</br>"
         if (header === msg) {
             // html += "<tr><td>Country:</td><td>" + country + "</td></tr>";
             // html += "<tr><td>Contact:</td><td>" + contact + "</td></tr>";
