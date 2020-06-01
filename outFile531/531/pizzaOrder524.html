@@ -22,15 +22,12 @@
             background-color: #444!important;
         }
         body {
-            /* max-width: 1200px; */
+            max-width: 1200px;
             margin: 0 auto;
         }
 span {color: red;}
 .green {color: green;}
-.borderGreen {border-color: green;}
-.borderRed {border-color: red;}
 .right {float: right;}
-article.left531 {font-size: 70%;}
        /* .sticky {
   position: -webkit-sticky;
   position: sticky;
@@ -72,7 +69,7 @@ article.left531 {font-size: 70%;}
 
 <!-- === start: leftSide article================== --> 
 <!-- === start: leftSide article ////////////////-->  
-<article class="col-md-4 left531"  >
+<article class="col-md-4 "  >
     <hr><hr>
 
     <!-- <div class="sticky" style="position: fixed; top: 90px; z-index: 2; width: 213.775px; height: auto;"> -->
@@ -80,46 +77,34 @@ article.left531 {font-size: 70%;}
 <!--Scrollspy-->
 <div id="scrollspy">
 
-<!-- <div class="form-group" >  
-    <input type="text" class="form-control" id="price" placeholder="Price: $0" name="price" >  </div> -->
+<div class="form-group" >  
+    <input type="text" class="form-control" id="price" placeholder="Price: $0" name="price" >  </div>
     <br>
 <!--523- textearea 522 -https://mdbootstrap.com/docs/jquery/forms/textarea/ -->
 <div class="md-form">
-  <textarea id="form7" class="md-textarea form-control" rows="1">Price: $0 
+  <textarea id="form7" class="md-textarea form-control" rows="3">Your order:
+
+    
   </textarea>
-  <label for="form7"></label>
+  <label for="form7">Material textarea</label>
   </div>
   <!-- <table id="textarea_info"></table> -->
 
 <!-- 523 -->
  <div style="background-color: #fff; width: 100%; border-radius: 4px;">
-  <p>Your Order: <br>
-  <!-- <span id="yourOrder1">Empty</span> -->
-</p>
+  <p>Your Order: 
+  <span id="yourOrder1">Empty</span></p>
   <!-- <table id="pizza_info" class=" bg-light "></table> -->
 <!-- <h5 id="yourOrder">&nbsp;</h5> -->
-<!-- <table id="pizza_info"></table> -->
+<table id="pizza_info"></table>
 <!-- fromlab13-524 -->
 <h5 id="order_header">&nbsp;</h5>
 <table id="order_info"></table>
-<p id="checkValue"></p>
-<!-- <span id="yourOrder1">Empty</span> -->
+
   <!-- <h2 id="table_title">&nbsp;</h2>
   <table id="table_info"></table> -->
 </div>
-<br>
 
-<!-- 531 -->
-<div style="background-color: #ccc; width: 100%; border-radius: 4px;">
-    <p>Delivery Address: <br>
-        <!-- <span id="yourOrder1">Empty</span> -->
-  </p>
-
-  <table id="delivery_info"></table>
-  
-    <!-- <h2 id="table_title">&nbsp;</h2>
-    <table id="table_info"></table> -->
-  </div>
       </div><!--Scrollspy-->
     </div> <!--/sticky-->
 
@@ -162,7 +147,7 @@ article.left531 {font-size: 70%;}
 <form action="register_account.html" method="get" id="order_form">
     <div class="form-group">
         <label for="uname">Name</label>
-        <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+        <span><i class="far fa-thumbs-down right"></i></span>
         <input type="text" class="form-control" id="uname" placeholder="Enter your name" name="uname" required>
         <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -171,7 +156,7 @@ article.left531 {font-size: 70%;}
     <!-- Bootstrap Select List; <div class="form-group">; selected -->
 <div class="form-group">
     <label for="address-type">Address Type:</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span><i class="far fa-thumbs-down right"></i></span>
     <select class="form-control" id="address-type">
       <option value="">- Select Address Type here...-</option>
       <option>house</option>
@@ -189,7 +174,7 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="uaddress">Street Address (Format: 123 Main Street)</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span><i class="far fa-thumbs-down right"></i></span>
     <input type="text" class="form-control" id="uaddress" placeholder="Enter your address" name="uaddress" required>
     <div class="valid-feedback">Valid. <i class="far fa-thumbs-up"></i></div>
     <div class="invalid-feedback">Please fill out this field. <i class="far fa-thumbs-down "></i></div>
@@ -197,21 +182,21 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="uapartment">Apartment Number (optional)</label>
-    <input type="text" class="form-control" id="uapartment" placeholder="" name="uapartment" required>
+    <input type="text" class="form-control" id="uapartment" placeholder="" name="uapartment">
 </div>
 
 
 <div class="form-group">
     <label for="room-number">Suite or Room Number (optional)</label>
-    <input type="text" class="form-control" id="room-number" placeholder="room-number" name="room-number"  required>
+    <input type="text" class="form-control" id="room-number" placeholder="room-number" name="room-number">
     <!-- <div class="valid-feedback">Valid.</div>
     <div class="invalid-feedback">Please fill out this field.</div> -->
 </div>
 
 <div class="form-group">
     <label for="ucity">City</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
-    <input type="text" class="form-control" id="ucity" placeholder="City" name="ucity"  required>
+    <span><i class="far fa-thumbs-down right"></i></span>
+    <input type="text" class="form-control" id="ucity" placeholder="City" name="ucity" >
     <!-- required -->
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -219,7 +204,7 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="ustate">State (Format:CA)</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span><i class="far fa-thumbs-down right"></i></span>
     <input type="text" class="form-control" id="ustate" placeholder="state" name="ustate" required>
      <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -227,8 +212,7 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="uzip">Zip Code (Format:12345 or 12345-1234)</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
-    <!-- <span id='valid' style="display: none;"><i class="far fa-thumbs-up right green"></i></span> -->
+    <span><i class="far fa-thumbs-down right"></i></span>
     <input type="text" class="form-control" id="uzip" placeholder="zip code" name="uzip" required>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -236,7 +220,7 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="uphone">Phone Number Format: (619) 123-4567</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span><i class="far fa-thumbs-down right"></i></span>
     <input type="text" class="form-control" id="uphone" placeholder="... ...-...." name="uphone" required>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -244,7 +228,7 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="uemail">Email (hungryguy@pizzafuns.com)</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span><i class="far fa-thumbs-down right"></i></span>
     <input type="text" class="form-control mb-4" id="uemail" placeholder="Enter your email" name="uemail" required>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -257,7 +241,7 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="pizza-type">Type of dough</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span><i class="far fa-thumbs-down right"></i></span>
     <select class="form-control" id="pizza-type">
         <option value="">- select a dough type here... -</option>
         <option>Hand Tossed</option>
@@ -274,10 +258,9 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="pizza-size">Size and Cost:</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span><i class="far fa-thumbs-down right"></i></span>
     <select class="form-control" id="pizza-size">
         <option value="">- Select Pizza Size here...-</option>
-        <option>small ($9.99)</option>
         <option>large ($16.99)</option>
         <option>extralarge ($19.99)</option>
         <!-- <option>3</option>
@@ -398,8 +381,7 @@ article.left531 {font-size: 70%;}
         </article> <!-- end rightSide article -->
     </div>
     
-    <!-- <script src="pizzaOrder531.js"></script> -->
-    <script src="pizzaOrder531_validation.js"></script>
+    <script src="pizzaOrder531.js"></script>
 <!-- ========================================== -->    
     
     <!-- div.row>article.col-sm-6.col-md-4*6>h3{Sub heading}+p>lorem -->
