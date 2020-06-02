@@ -225,31 +225,34 @@ if (zip === "") {
          $('invalid-z').classList.add('hidden');
         $('valid-z').classList.add('show');
     }
-//61
-  //5 or 9 digit zip
-  //regZip = /^[0-9]{5}(?:-[0-9]{4})?$/;
-   //Credit Card Regex
-   //regCredit = 
-   //regexp = /^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$/;
-   // Check for 3 numbers for CCV
-   //reqCCV = /^[0-9]{3}?$/;
+
 
 // pizza*********************
 if (pizzaType === "") {
     pizzaType = required;
     // header = msg;
-} else if ("input[name='p-type']:checked") {
+} else if (pizzaType === "other"){
+    var otherPt =   prompt('enter your info here:');
+    pizzaType === otherPt;
+    }
+else if ("input[name='p-type']:checked") {
          $('invalid-pt').classList.add('hidden');
         //$('valid-pt').classList.add('show');
     }
 if (pizzaSize === "") {
 pizzaSize = required;
 // header = msg;
-} 
+} else if (pizzaSize === "other"){
+    var otherPs =   prompt('enter your info here:');
+    pizzaSize === otherPs;
+    }
 else {
          $('invalid-ps').classList.add('hidden');
         //$('valid-ps').classList.add('show');
     }
+
+
+
 
 //     else { 
 // //      {
@@ -392,6 +395,132 @@ $("delivery_info").innerHTML = html;
 window.addEventListener("load", function () {
     "use strict";
     $("order").addEventListener("click", processOrder);
-    $("uname").focus();
+    //$("uname").focus();
 });
 //alert('Are you sure?');
+
+
+
+
+// 612020
+// 61- BILLING PAGE*********************
+// 61- BILLING PAGE*********************
+// 61- BILLING PAGE*********************
+
+var processBilling = function () {
+
+var fullName, card, cvc, expMonth, expYear, required;
+fullName = $('f-name').value;
+card = $('ucard').value;
+cvc = $('ucvc').value;
+expMonth = $('exp-month').value;
+expYear = $('exp-year').value;
+required = "<span>Required</span>";
+//***validation 
+// 61- fullname validation*********************
+var regFullName = /^\b[A-Z]+.+[?^ ][A-Z].{1,19}|\b[A-Z]+.+[?^,][A-Z].{1,19}/;
+//var alphaExp = /^[a-zA-Z]+$/;
+if (fullName === "") {
+   // fullName = required;
+    $('nova-name').innerHTML = required;
+    //header = msg;
+} else if (!regFullName.test(fullName)) {
+   // fullName = 'Please write a valid name';
+   $('f-name').classList.add('borderRed');
+   $('nova-name').innerHTML = 'Please write a valid name';
+//    $('invalid-n').classList.add('show');
+//    $('valid-n').classList.add('hidden');
+  //  return false;
+} else {
+    $('f-name').style.borderColor = 'green';
+    $('invalid-n').classList.add('hidden');
+    $('valid-n').classList.add('show');
+    $('nova-name').classList.add('hidden');
+    $('va-name').innerHTML = 'Valid';
+
+    // $('invalid-z').classList.add('hidden');
+    // $('valid-z').classList.add('show');
+}
+// 61- creditcard validation*********************
+//var numericExpression = /^[0-9]+$/;
+var regCardExp = /^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$/;
+    if (card === "") {
+        //card = required;
+        $('nova-card').innerHTML = required;
+    } else if ( card.length != 16 ) {
+        $('nova-card').innerHTML = "<span>Use 16 digital format</span>";
+        $('ucard').style.borderColor = 'red';
+       // isValid = false;
+    // } else if (!regCardExp.test(card)) {
+    //    // card = 'Please write a valid number';
+    //     $('nova-card').innerHTML = "<span>Please write a valid number</span>";
+    } else {
+        $('ucard').style.borderColor = 'green';
+        $('invalid-card').classList.add('hidden');
+        $('valid-card').classList.add('show');
+        $('nova-card').classList.add('hidden');
+        $('va-card').innerHTML = 'Valid';
+    }
+// 61- cvc validation*********************
+//var numericExpression = /^[0-9]+$/;
+var reqExpCvc = /^[0-9]{3}?$/;
+    if (cvc === "") {
+        //cvc = required;
+        $('nova-cvc').innerHTML = required;
+    // } else if ( phone.length != 10 ) {
+    //     phone = "<span>Use 10 digital format.</span>";
+    //     $('uphone').style.borderColor = 'red';
+    //    // isValid = false;
+    } else if (!reqExpCvc.test(cvc)) {
+       // cvc = 'Please write a valid cvc number';
+        $('ucvc').style.borderColor = 'red';
+        $('nova-cvc').innerHTML =  "<span>Please write a valid CVC</span>";
+        //zip.classList.add('borderRed');
+    } else {
+        $('ucvc').style.borderColor = 'green';
+        $('invalid-cvc').classList.add('hidden');
+        $('valid-cvc').classList.add('show');
+        $('va-cvc').innerHTML = 'Valid';
+        $('nova-cvc').classList.add('hidden');
+    }
+// 61- exp month validation*********************
+if (expMonth === "" && expYear === "") {
+    expMonth = required;
+    $('nova-mo').innerHTML = required;
+    expYear = required;
+    $('nova-ye').innerHTML = required;
+   // header = msg;
+} else if (expMonth === "other" || expYear === "other"){
+var otherY =   prompt('enter your info here:');
+expYear === otherY;
+} else {
+     $('invalid-em').classList.add('hidden');
+    $('valid-em').classList.add('show');
+    $('nova-mo').classList.add('hidden');
+    $('va-mo').innerHTML = 'Valid';
+    
+    $('invalid-ey').classList.add('hidden');
+    $('valid-ey').classList.add('show');
+    $('nova-ye').classList.add('hidden');
+    $('va-ye').innerHTML = 'Valid';
+}
+
+//61
+  //5 or 9 digit zip
+  //regZip = /^[0-9]{5}(?:-[0-9]{4})?$/;
+   //Credit Card Regex
+   //regCredit = 
+   //regexp = /^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$/;
+   // Check for 3 numbers for CCV
+   //reqCCV = /^[0-9]{3}?$/;
+
+// 61- BILLING PAGE*********************
+
+  
+}
+
+window.addEventListener("load", function () {
+    "use strict";
+    $("bill").addEventListener("click", processBilling);
+    $("f-name").focus();
+});
