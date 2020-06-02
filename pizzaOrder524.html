@@ -33,6 +33,21 @@ span {color: red;}
 article.left531 {font-size: 70%;}
 .hidden {display: none;}
 .show {display: block;}
+
+/* 61 */
+/* .sticky {display: none;} */
+#order-in-sticky, #delivery-in-sticky { display: none;}
+.sticky {max-width: 90%; top: 60px;}
+@media screen and (min-width: 420px) {
+    /* .sticky {max-width: 25%;} */
+    /* #order-in-sticky { display: block; }
+    .sticky {display: block;}*/
+} 
+@media screen and (min-width: 770px) {
+    .sticky {max-width: 25%; top: 90px;}
+    #order-in-sticky,   #delivery-in-sticky { display: block;}
+    /* .sticky {display: block;} */
+}
        /* .sticky {
   position: -webkit-sticky;
   position: sticky;
@@ -77,52 +92,31 @@ article.left531 {font-size: 70%;}
 <article class="col-md-4 left531"  >
     <hr><hr>
 
-    <!-- <div class="sticky" style="position: fixed; top: 90px; z-index: 2; width: 213.775px; height: auto;"> -->
-    <div class="sticky" style="position: fixed; top: 90px; z-index: 2; width: 25%; height: auto;">
+    <!-- <div class="sticky" style="position: fixed; top: 90px; z-index: 2; width: 213.775px; height: auto;"> width: 25%; top: 90px;-->
+    <div class="sticky" style="position: fixed;  z-index: 2; height: auto;">
 <!--Scrollspy-->
 <div id="scrollspy">
-
-<!-- <div class="form-group" >  
-    <input type="text" class="form-control" id="price" placeholder="Price: $0" name="price" >  </div> -->
-    <br>
 <!--523- textearea 522 -https://mdbootstrap.com/docs/jquery/forms/textarea/ -->
 <div class="md-form">
   <textarea id="form7" class="md-textarea form-control" rows="1">Price: $0 
   </textarea>
   <label for="form7"></label>
   </div>
-  <!-- <table id="textarea_info"></table> -->
 
 <!-- 523 -->
- <div style="background-color: #fff; width: 100%; border-radius: 4px;">
-  <p>Your Order: <br>
-  <!-- <span id="yourOrder1">Empty</span> -->
-</p>
-  <!-- <table id="pizza_info" class=" bg-light "></table> -->
-<!-- <h5 id="yourOrder">&nbsp;</h5> -->
-<!-- <table id="pizza_info"></table> -->
-<!-- fromlab13-524 -->
+ <div id="order-in-sticky" style="background-color: #fff; width: 100%; border-radius: 4px;">
+  <p>Your Order: <br></p>
 <h5 id="order_header">&nbsp;</h5>
 <table id="order_info"></table>
 <p id="checkValue"></p>
-<!-- <span id="yourOrder1">Empty</span> -->
-  <!-- <h2 id="table_title">&nbsp;</h2>
-  <table id="table_info"></table> -->
 </div>
-<br>
 
 <!-- 531 -->
-<div style="background-color: #ccc; width: 100%; border-radius: 4px;">
-    <p>Delivery Address: <br>
-        <!-- <span id="yourOrder1">Empty</span> -->
-  </p>
-
-  <table id="delivery_info"></table>
-  
-    <!-- <h2 id="table_title">&nbsp;</h2>
-    <table id="table_info"></table> -->
-  </div>
-      </div><!--Scrollspy-->
+<div id="delivery-in-sticky" style="background-color: #ccc; width: 100%; border-radius: 4px;">
+    <p>Delivery Address: </p>
+<table id="delivery_info"></table>
+</div>
+    </div><!--Scrollspy-->
     </div> <!--/sticky-->
 
 
