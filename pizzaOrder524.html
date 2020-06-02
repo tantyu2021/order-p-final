@@ -31,6 +31,8 @@ span {color: red;}
 .borderRed {border-color: red;}
 .right {float: right;}
 article.left531 {font-size: 70%;}
+.hidden {display: none;}
+.show {display: block;}
        /* .sticky {
   position: -webkit-sticky;
   position: sticky;
@@ -162,7 +164,8 @@ article.left531 {font-size: 70%;}
 <form action="register_account.html" method="get" id="order_form">
     <div class="form-group">
         <label for="uname">Name</label>
-        <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+        <span id='invalid-n' ><i class="far fa-thumbs-down right"></i></span>
+        <span id='valid-n' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
         <input type="text" class="form-control" id="uname" placeholder="Enter your name" name="uname" required>
         <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -171,7 +174,8 @@ article.left531 {font-size: 70%;}
     <!-- Bootstrap Select List; <div class="form-group">; selected -->
 <div class="form-group">
     <label for="address-type">Address Type:</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-at'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-at' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <select class="form-control" id="address-type">
       <option value="">- Select Address Type here...-</option>
       <option>house</option>
@@ -189,7 +193,8 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="uaddress">Street Address (Format: 123 Main Street)</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-a'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-a' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <input type="text" class="form-control" id="uaddress" placeholder="Enter your address" name="uaddress" required>
     <div class="valid-feedback">Valid. <i class="far fa-thumbs-up"></i></div>
     <div class="invalid-feedback">Please fill out this field. <i class="far fa-thumbs-down "></i></div>
@@ -210,7 +215,8 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="ucity">City</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-c'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-c' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <input type="text" class="form-control" id="ucity" placeholder="City" name="ucity"  required>
     <!-- required -->
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
@@ -219,7 +225,8 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="ustate">State (Format:CA)</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-s'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-s' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <input type="text" class="form-control" id="ustate" placeholder="state" name="ustate" required>
      <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -227,7 +234,8 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="uzip">Zip Code (Format:12345 or 12345-1234)</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-z'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-z' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <!-- <span id='valid' style="display: none;"><i class="far fa-thumbs-up right green"></i></span> -->
     <input type="text" class="form-control" id="uzip" placeholder="zip code" name="uzip" required>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
@@ -236,7 +244,8 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="uphone">Phone Number Format: (619) 123-4567</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-p'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-p'  class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <input type="text" class="form-control" id="uphone" placeholder="... ...-...." name="uphone" required>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -244,7 +253,8 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="uemail">Email (hungryguy@pizzafuns.com)</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-e'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-e' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <input type="text" class="form-control mb-4" id="uemail" placeholder="Enter your email" name="uemail" required>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -257,13 +267,14 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="pizza-type">Type of dough</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-pt'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid--pt' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <select class="form-control" id="pizza-type">
         <option value="">- select a dough type here... -</option>
-        <option>Hand Tossed</option>
-        <option>Thin Crust</option>
-        <option>New York Style</option>
-        <option>Gluten Free</option>
+        <option name="p-type">Hand Tossed</option>
+        <option name="p-type">Thin Crust</option>
+        <option name="p-type">New York Style</option>
+        <option name="p-type">Gluten Free</option>
     </select>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
     <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -274,7 +285,8 @@ article.left531 {font-size: 70%;}
 
 <div class="form-group">
     <label for="pizza-size">Size and Cost:</label>
-    <span id='invalid'><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-ps'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-ps' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <select class="form-control" id="pizza-size">
         <option value="">- Select Pizza Size here...-</option>
         <option>small ($9.99)</option>
