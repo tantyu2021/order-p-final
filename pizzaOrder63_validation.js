@@ -15,7 +15,7 @@ var processOrder = function () {
     header = "";
     html = "";
     required = "<span>Required</span>";
-    msg = "Table Info";
+    msg = "<span>Please fill all required fields</span>";
 // msg = "Please complete all required fields.";
     email = $("uemail").value;
     phone = $("uphone").value;
@@ -34,14 +34,6 @@ var processOrder = function () {
     pizzaType = $('pizza-type');//or #p-type
     pizzaSize = document.getElementsByClassName('sss');
     html_pizza = '';
-    //
-    // contact = "Text";
-    // if ($("email").checked) {
-    //     contact = "Email";
-    // } else if ($("none").checked) {
-    //     contact = "None";
-    // }
-    // terms = $("terms").checked;
    
 // 531-the handler for the click event of a submit button
 // $("#email_form").submit(
@@ -57,11 +49,12 @@ var emailPattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b/;
 //or?:  /^[w-.+]+@[a-zA-Z0-9.]+.[a-zA-Z0-9]{2,4}$/;
     if (email === "") {
         email = required;
-        //header = msg;
+        header = msg;
     } else if ( !emailPattern.test(email) ) {
        // email = 'Must be a valid email';
        email = "<span>Please write a valid email</span>";
         $('uemail').style.borderColor = 'red';
+      //  header = msg;
 //isValid = false;
 //return false;
     } else {
@@ -80,6 +73,7 @@ var emailPattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b/;
 var numericExpression = /^[0-9]+$/;
     if (phone === "") {
         phone = required;
+        header = msg;
        // $('invalid').style.visibility = 'visible';
     //    $('invalid').style.display = 'block';
     //    $('valid').style.display = 'none';
@@ -90,9 +84,11 @@ var numericExpression = /^[0-9]+$/;
     } else if ( phone.length != 10 ) {
         phone = "<span>Use 10 digital format.</span>";
         $('uphone').style.borderColor = 'red';
+        header = msg;
        // isValid = false;
     } else if (!numericExpression.test(phone)) {
         phone = 'Please write a valid phone';
+     //   header = msg;
         //zip.classList.add('borderRed');
     } else {
         $('uphone').style.borderColor = 'green';
@@ -106,18 +102,15 @@ var numericExpression = /^[0-9]+$/;
     //     country = required;
     //     header = msg;
     // }
-    // if (terms === false) {
-    //     terms = required;
-    //    // header = msg;
-    // }
 // validate the name entry*********************
     var alphaExp = /^[a-zA-Z]+$/;
     if (name === "") {
         name = required;
-        //header = msg;
+        header = msg;
     } else if (!alphaExp.test(name)) {
         name = 'Please write a valid name';
        $('uname').classList.add('borderRed');
+    //   header = msg;
     //    $('invalid-n').classList.add('show');
     //    $('valid-n').classList.add('hidden');
       //  return false;
@@ -137,7 +130,7 @@ var numericExpression = /^[0-9]+$/;
 // address type*********************
 if (addressType === "") {
         addressType = required;
-       // header = msg;
+        header = msg;
     } 
     else if (addressType === "other"){
 var yourOtherAddressType =   prompt('Please enter your Address Type here:');
@@ -150,10 +143,11 @@ addressType === yourOtherAddressType;
 var alphaExp = /^[0-9a-zA-Z]+$/;
 if (address === "") {
         address = required;
-        //header = msg;
+        header = msg;
     } else if (!alphaExp.test(address)) {
         address = 'Please write a valid address';
         $('uaddress').style.borderColor = 'red';
+      //  header = msg;
        // address.classList.add('borderRed');
       //  return false;
     } else {
@@ -166,10 +160,11 @@ if (address === "") {
 var alphaExp = /^[a-zA-Z]+$/;
     if (city === "") {
         city = required;
-       // header = msg;
+        header = msg;
     } else if (!alphaExp.test(city)) {
         city = 'Please write a valid city';
         $('ucity').style.borderColor = 'red';
+     //   header = msg;
         //('ucity').classList.add('borderRed');
       //  return false;
     } else {
@@ -183,14 +178,16 @@ var alphaExp = /^[a-zA-Z]+$/;
 if (state === "") {
         state = required;
        // isValid = false;
-        //header = msg;
+        header = msg;
     } else if ( state.length != 2 ) {
        // $("#state").next().text("Use 2-character code.");
        state = '<span>Use 2-character code.</span>';
        $('ustate').style.borderColor = 'red';
+    //   header = msg;
        // isValid = false;
     } else if (!alphaExp.test(state)) {
        state = 'Please write a valid state';
+   //    header = msg;
        // ('ustate').classList.add('borderRed');
       //  return false;
     } else {
@@ -218,13 +215,15 @@ if (zip === "") {
         //$('invalid').style.display='block';
         // $('valid').style.display='none';
        // isValid = false;
-       // header = msg;
+        header = msg;
     } else if ( zip.length != 5 ) {
         zip = "<span>Use 99999 format.</span>";
         $('uzip').style.borderColor = 'red';
+     //   header = msg;
        // isValid = false;
     } else if (!numericExpression.test(zip)) {
         zip = 'Please write a valid zip';
+      //  header = msg;
         //zip.classList.add('borderRed');
     } else {
         $('uzip').style.borderColor = 'green';
@@ -236,7 +235,7 @@ if (zip === "") {
 // pizza*********************
 if (pizzaType === "") {
     pizzaType = required;
-    // header = msg;
+     header = msg;
 } else if (pizzaType === "other"){
     var otherPt =   prompt('enter your info here:');
     pizzaType === otherPt;
@@ -250,7 +249,7 @@ else  {
     }
 if (pizzaSize === "") {
 pizzaSize = required;
-// header = msg;
+ header = msg;
 } else if (pizzaSize === "other"){
     var otherPs =   prompt('enter your info here:');
     pizzaSize === otherPs;
@@ -259,45 +258,12 @@ else {
     $('invalid-ps').classList.add('hidden');
     $('valid-ps').classList.add('show');
     }
-//61
-//computer choice
-// var compSay;
-// switch(Math.floor(Math.random()*3)) {
-// case 0:
-//   compSay = 'rock';
-//   break;
-// case 1:
-//   compSay = 'scissors';
-//   break;
-// case 2:
-//   compSay = 'paper';
-//   break;
-// }
-// console.log('computer says ',  compSay); 
-// alert('computer says ' + compSay);
-
-
-
 
 //61f
 //const pizzaSizeCost = $( "pizza-type").text();
 // ?const pizzaSize = pizzaSizeCost.split(':')[0];
 // const pizzaCost = pizzaSizeCost.split(':')[1];
 
-let isVisibleComplements = false;
-
-function showPizzaSelections() {
-    if (!isVisibleComplements) {
-      $('pizza-size-cost').show();
-      //$('#select-sause-div').show();   
-      //$('#select-cheese-div').show();       
-    //   $('#topping-options-first-group').show();
-    //   $('#topping-options-second-group').show();
-      $('add-to-cart-btn').show(); //62interaction
-    }
-
-    isVisibleComplements = true;
-  }
 
 var pizzaSizeInType = {
     'hand-tossed': [{'size': 'Small', 'price': 9.99},
@@ -398,8 +364,6 @@ document.querySelectorAll('input[name=p-type]').forEach (p => { p.onclick = func
 
 
 //62
-
-
 //     else { 
 // //      {
 // //         $("#zip").next().text("");
@@ -467,9 +431,6 @@ var priceTotal = costChees + costSauce + toppingTypeCost + costPizza;
 // $("price").innerHTML = "$ " + priceTotal;
 
 
-
-
-
 // 531
 function printChecked(){
     var items=document.getElementsByName('top-on');
@@ -490,7 +451,7 @@ function printChecked(){
 //524-pizzabuilding
 //$("order_header").innerHTML = header;
 
-$('order_header').innerHTML = 'Price: $' + priceTotal;
+$('order_price').innerHTML = 'Price: $' + priceTotal;
 // html_pizza += "<tr><td>Price:</td><td>" + priceTotal + "</td></tr>";
 html_pizza += "<tr><td>Dough Type:</td><td>" + pizzaType + "</td></tr>";
         html_pizza += "<tr><td>Size and Cost:</td><td>" + pizzaSize + "</td></tr>";
@@ -535,16 +496,21 @@ html += "<tr><td>Zip Code:</td><td>" + zip + "</td></tr>";
 html += "<tr><td>Phone:</td><td>" + phone + "</td></tr>";
 html += "<tr><td>Email:</td><td>" + email + "</td></tr>";
 $("delivery_info").innerHTML = html;
-//    } 
-  //  else {$("order_form").submit();}
+
+
+  $("order_header").innerHTML = header;
+  if (header === msg) {
+  } else {
+      $("order_form").submit();
+  }
 };
 
 window.addEventListener("load", function () {
     "use strict";
     $("order").addEventListener("click", processOrder);
     //$("uname").focus();
+    //alert('Are you sure?');
 });
-//alert('Are you sure?');
 
 
 

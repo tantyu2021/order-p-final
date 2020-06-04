@@ -39,14 +39,6 @@ var processOrder = function () {
 pizzaSize = $('pizza-size').value;
     //pizzaSize = document.getElementsByClassName('sss');
     html_pizza = '';
-    //
-    // contact = "Text";
-    // if ($("email").checked) {
-    //     contact = "Email";
-    // } else if ($("none").checked) {
-    //     contact = "None";
-    // }
-    // terms = $("terms").checked;
    
 // 531-the handler for the click event of a submit button
 // $("#email_form").submit(
@@ -123,10 +115,6 @@ var numericExpression = /^[0-9]+$/;
     // if (country === "") {
     //     country = required;
     //     header = msg;
-    // }
-    // if (terms === false) {
-    //     terms = required;
-    //    // header = msg;
     // }
 // validate the name entry*********************
     var alphaExp = /^[a-zA-Z]+$/;
@@ -457,10 +445,6 @@ document.querySelectorAll('input[name=p-type]').forEach (p => { p.onclick = func
 }});  
 
 
-
-
-
-
 // // top-on = p-type  
 // function findYourPizza(){
 //     var pItems=document.getElementsByName('pizza-type');
@@ -475,8 +459,6 @@ document.querySelectorAll('input[name=p-type]').forEach (p => { p.onclick = func
 
 
 //62
-
-
 //     else { 
 // //      {
 // //         $("#zip").next().text("");
@@ -544,9 +526,6 @@ var priceTotal = costChees + costSauce + toppingTypeCost + costPizza;
 // $("price").innerHTML = "$ " + priceTotal;
 
 
-
-
-
 // 531
 function printChecked(){
     var items=document.getElementsByName('top-on');
@@ -580,7 +559,7 @@ function printChecked(){
 //524-pizzabuilding
 //$("order_header").innerHTML = header;
 
-$('order_header').innerHTML = 'Price: $' + priceTotal;
+$('order_price').innerHTML = 'Price: $' + priceTotal;
 // html_pizza += "<tr><td>Price:</td><td>" + priceTotal + "</td></tr>";
 html_pizza += "<tr><td>Dough Type:</td><td>" + pizzaType + "</td></tr>";
         html_pizza += "<tr><td>Size and Cost:</td><td>" + pizzaSize + "</td></tr>";
@@ -625,8 +604,7 @@ html += "<tr><td>Zip Code:</td><td>" + zip + "</td></tr>";
 html += "<tr><td>Phone:</td><td>" + phone + "</td></tr>";
 html += "<tr><td>Email:</td><td>" + email + "</td></tr>";
 $("delivery_info").innerHTML = html;
-//    } 
-  //  else {$("order_form").submit();}
+
 
   $("order_header").innerHTML = header;
 if (header === msg) {
