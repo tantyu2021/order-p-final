@@ -196,7 +196,8 @@ if (address === "") {
     }
 // validate the city entry*********************
 //or: /^[a-zA-Z\s,.'-]{5,}$/;
-var alphaExp = /^[a-zA-Z]+$/;
+//or:/^[a-zA-Z]+$/;
+var alphaExp = /^[a-zA-Z\s,.'-]{5,}$/;
     if (city === "") {
         city = required;
         header = msg;
@@ -575,11 +576,17 @@ $("delivery_info").innerHTML = html;
 //     $("order_form").submit();
 // }
 // };
-
+let stayOrGo = "n";
 $("order_header").innerHTML = header;
 if (header === msg) {
-} else {
+} else if (stayOrGo === "n"){
+    stayOrGo = window.prompt("Are you sure (y/n)?"); 
     // alert('Are you sure?');
+    //$("order_form").submit();
+//} if (stayOrGo === 'n') {
+    processOrder;
+}else  if (stayOrGo === "y"){
+    //window.alert("Thank you for your order");
     $("order_form").submit();
 }
 };
@@ -590,7 +597,12 @@ window.addEventListener("load", function () {
     //$("uname").focus();
 });
 
-
+// let pAgain = "y";
+// while (pAgain === "y") {
+//     pGame();
+//     pAgain = window.prompt("Do you want again (y/n)?")      
+// }
+// window.alert("Thank you ");
 
 
 
