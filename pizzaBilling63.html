@@ -23,7 +23,7 @@ span {color: red;}
 .borderGreen {border-color: green;}
 .borderRed {border-color: red;}
 .right {float: right;}
-article.left531 {font-size: 70%;}
+article.left531 {font-size: 80%;}
 .hidden {display: none;}
 .show {display: block;}
        /* .sticky {
@@ -35,6 +35,42 @@ article.left531 {font-size: 70%;}
   font-size: 20px;
 } */
 </style> 
+
+<script>
+	//<![CDATA[
+	var decode = function ( text ) {
+	    text = text.replace(/\+/g, " ");
+	    text = text.replace(/%[a-fA-F0-9]{2}/g, 
+	        function ( text ) {
+	            return String.fromCharCode( "0x" + text.substr(1,2));
+	        }
+	    );
+	    return text;
+	}
+	    
+	var display_data = function () {
+	    var url_parts = window.location.toString().split("?");
+	    if ( url_parts.length != 2 ) return;
+	    
+	    var fields = url_parts[1].split("&");
+	    
+	    if ( fields.length == 0 ) {
+	        document.write("<p>No data was submitted.</p>");
+	    } else {
+	        document.write("<dl>");
+	        var field_parts;
+	        for ( var i in fields ) {
+	            field_parts = fields[i].split("=");
+	            field_parts[0] = decode( field_parts[0] );
+	            field_parts[1] = decode( field_parts[1] );
+	            document.write("<dt>" + field_parts[0] + "</dt>");
+	            document.write("<dd>" + field_parts[1] + "</dd>");
+	        }
+	        document.write("</dl>");
+	    }
+	}
+	//]]>
+	</script>
 </head>
 
 
@@ -71,7 +107,7 @@ article.left531 {font-size: 70%;}
     <hr><hr>
 
     <!-- <div class="sticky" style="position: fixed; top: 90px; z-index: 2; width: 213.775px; height: auto;"> -->
-    <div class="sticky" style="position: fixed; top: 90px; z-index: 2; width: 25%; height: auto;">
+    <div class="sticky" style="position: fixed; top: 50px; z-index: 2; width: 25%; height: auto;">
 <!--Scrollspy-->
 <div id="scrollspy">
 
@@ -85,24 +121,18 @@ article.left531 {font-size: 70%;}
   <label for="form7"></label>
   </div>
   <!-- <table id="textarea_info"></table> -->
+  <!-- <h5 id="order_header">&nbsp;</h5> -->
 
+  <h3 id="billing_header"> <span> &nbsp;</span></h3>
+  <!-- <div id="billing_info"></div> -->
 <!-- 523 -->
- <div style="background-color: #fff; width: 100%; border-radius: 4px;">
-  <p>Your Order: <br>
-  <!-- <span id="yourOrder1">Empty</span> -->
-</p>
-  <!-- <table id="pizza_info" class=" bg-light "></table> -->
-<!-- <h5 id="yourOrder">&nbsp;</h5> -->
-<!-- <table id="pizza_info"></table> -->
-<!-- fromlab13-524 -->
-<h5 id="order_header">&nbsp;</h5>
+ <div style="background-color: #ccc; width: 100%; border-radius: 4px;">
+  <p>Your Data: </p>
+    <script type="text/javascript">display_data();</script> 
+
 <table id="order_info"></table>
 <p id="checkValue"></p>
-<!-- <span id="yourOrder1">Empty</span> -->
-  <!-- <h2 id="table_title">&nbsp;</h2>
-  <table id="table_info"></table> -->
-  <h3 id="billing_header"> <span> &nbsp;</span></h3>
-  <div id="billing_info"></div>
+  <!-- <h2 id="table_title">&nbsp;</h2>-->
 </div>
 <br>
 
@@ -126,10 +156,13 @@ article.left531 {font-size: 70%;}
 </div> -->
 
 <div  class="jumbotron  bg-info text-light">
-    <div style="background-color: #ccc; width: 100%; border-radius: 4px;">
+    <h3>Thanks for your order!</h3>
+    <!-- <p>Your order form has been submitted with the following data:</p> -->
+    <script src="pizzaOrder531_validation.js"></script>
+    <!-- <div style=" border-radius: 4px;">
         <p>Delivery Address: <br>  </p>
       <table id="delivery_info"></table> 
-      </div>
+      </div> -->
 </div>
 
 

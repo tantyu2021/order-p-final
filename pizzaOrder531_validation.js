@@ -242,7 +242,7 @@ if (state === "") {
         $('valid-s').classList.add('show');
         $('nova-st').classList.add('green');
         $('nova-st').innerHTML = 'Valid';
-        header = msg;
+    
         }
 //     else { 
 //  //   { $("ustate").next().text(""); }
@@ -457,18 +457,6 @@ document.querySelectorAll('input[name=p-type]').forEach (p => { p.onclick = func
 //     }
 //                 }
 
-
-//62
-//     else { 
-// //      {
-// //         $("#zip").next().text("");
-// //     }
-// //    $("uzip").val(zip);
-//     $('uzip').style.borderColor = 'green';
-//     $('invalid').style.display='none';
-//     // $('valid').style.display='block';
-// }
-    //
  //524-pizza
 //pizzaType = $('pizza-type').value;
 //pizzaSize = $('pizza-size').value;
@@ -508,12 +496,7 @@ costPizza = 16.99;
 }else if (pizzaSize === "extralarge ($19.99)") {
 costPizza = 19.99;
 }
-//525checkb
-// var costTopping;
-// toppings;
-// if ($('top-on').checked) {
-// }
-// // 519-topping-
+
 
 //531
 var toppingTypeCost = 0;
@@ -570,28 +553,8 @@ html_pizza += "<tr><td>Dough Type:</td><td>" + pizzaType + "</td></tr>";
         // $("pizza_info").innerHTML = html;
         // $("registration_form").submit();
   
-
-   
-    // $("form7").innerHTML = header;
-
-    // $("form7").innerHTML = "Dough Type: " + pizzaType + "Size and Cost: " + pizzaSize  + "Type of Chees: " + cheesType + "Type of Sauce: " + sauceType;
-// $("form7").innerHTML = "Dough Type: " + pizzaType;
-// $("form7").innerHTML += "<tr><td>Size and Cost:</td><td>" + pizzaSize + "</td></tr>";
-// $("form7").innerHTML += "<tr><td>Type of Chees:</td><td>" + cheesType + "</td></tr>";
-// $("form7").innerHTML += "<tr><td>Type of Sauce:</td><td>" + sauceType + "</td></tr>";
-
-// $("price").value(priceTotal);
-//$("price").innerHTML = "$ " + priceTotal;
-   // $("form7").innerHTML = "Dough Type: " + pizzaType;
     $("form7").innerHTML = "Price: $" + priceTotal;
-   // $("form7").innerHTML += " Size and Cost: " + pizzaSize ;
-    // $("form7").innerHTML += " Type of Chees: " + cheesType ;
-    // $("form7").innerHTML += " Type of Sauce: " + sauceType;
-    // + "</br>"
-   // if (header === msg) {
-        // html += "<tr><td>Country:</td><td>" + country + "</td></tr>";
-        // html += "<tr><td>Contact:</td><td>" + contact + "</td></tr>";
-        // html += "<tr><td>Terms:</td><td>" + terms + "</td></tr>";
+ 
 //524
 html += "<tr><td>Name:</td><td>" + name + "</td></tr>";
 html += "<tr><td>Address Type:</td><td>" + addressType + "</td></tr>";
@@ -606,9 +569,17 @@ html += "<tr><td>Email:</td><td>" + email + "</td></tr>";
 $("delivery_info").innerHTML = html;
 
 
-  $("order_header").innerHTML = header;
+//   $("order_header").innerHTML = header;
+// if (header === msg) {
+// } else {
+//     $("order_form").submit();
+// }
+// };
+
+$("order_header").innerHTML = header;
 if (header === msg) {
 } else {
+    // alert('Are you sure?');
     $("order_form").submit();
 }
 };
@@ -618,7 +589,7 @@ window.addEventListener("load", function () {
     $("order").addEventListener("click", processOrder);
     //$("uname").focus();
 });
-//alert('Are you sure?');
+
 
 
 

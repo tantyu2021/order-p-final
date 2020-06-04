@@ -11,12 +11,10 @@ var processOrder = function () {
     name, addressType, address, roomNumber, city, state, zip, apartment,
     pizzaType, pizzaSize, cheesType, sauceType, toppings, requiredT, html_pizza;
 
-    //header = priceTotal;
     header = "";
     html = "";
     required = "<span>Required</span>";
     msg = "<span>Please fill all required fields</span>";
-// msg = "Please complete all required fields.";
     email = $("uemail").value;
     phone = $("uphone").value;
     // country = $("country").value;
@@ -34,11 +32,6 @@ var processOrder = function () {
     pizzaType = $('pizza-type');//or #p-type
     pizzaSize = document.getElementsByClassName('sss');
     html_pizza = '';
-   
-// 531-the handler for the click event of a submit button
-// $("#email_form").submit(
-// function(event) {
-//     var isValid = true;   ....}
 
     // validation
 //*********************** */
@@ -50,45 +43,42 @@ var emailPattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b/;
     if (email === "") {
         email = required;
         header = msg;
+        $('nova-em').innerHTML = required;
     } else if ( !emailPattern.test(email) ) {
        // email = 'Must be a valid email';
        email = "<span>Please write a valid email</span>";
+       $('nova-em').innerHTML = '<span>Please write a valid email</span>';
         $('uemail').style.borderColor = 'red';
-      //  header = msg;
+       header = msg;
 //isValid = false;
 //return false;
     } else {
         $('uemail').style.borderColor = 'green';
          $('invalid-e').classList.add('hidden');
         $('valid-e').classList.add('show');
+        $('nova-em').classList.add('green');
+        $('nova-em').innerHTML = 'Valid';
        // email.style.borderColor = 'green';
     }
-    // else if (inputtext.value.match(emailExp)) {
-    //     return true;
-    //     email.classList.add('borderGreen');
-    //     //$('uemail').style.borderColor = 'green';
-    // }
+ 
 // validate the phone entry*********************
 //or: regex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 var numericExpression = /^[0-9]+$/;
     if (phone === "") {
         phone = required;
+        $('nova-p').innerHTML = required;
         header = msg;
-       // $('invalid').style.visibility = 'visible';
-    //    $('invalid').style.display = 'block';
-    //    $('valid').style.display = 'none';
-    // $('invalid').style.display = 'none';
-    // $('valid').style.visibility = 'hidden';
-    //$('invalid-p').classList.add('show');
     //    $('valid-p').classList.add('hidden');
     } else if ( phone.length != 10 ) {
         phone = "<span>Use 10 digital format.</span>";
         $('uphone').style.borderColor = 'red';
+        $('nova-p').innerHTML = '<span>Use 10 digital format</span>';
         header = msg;
        // isValid = false;
     } else if (!numericExpression.test(phone)) {
         phone = 'Please write a valid phone';
-     //   header = msg;
+        $('nova-p').innerHTML = '<span>Please write a valid phone</span>';
+       header = msg;
         //zip.classList.add('borderRed');
     } else {
         $('uphone').style.borderColor = 'green';
@@ -97,6 +87,8 @@ var numericExpression = /^[0-9]+$/;
         // $('valid').style.visibility = 'hidden';
         $('invalid-p').classList.add('hidden');
         $('valid-p').classList.add('show');
+        $('nova-p').classList.add('green');
+        $('nova-p').innerHTML = 'Valid';
     }
     // if (country === "") {
     //     country = required;
@@ -107,25 +99,21 @@ var numericExpression = /^[0-9]+$/;
     if (name === "") {
         name = required;
         header = msg;
+        $('nova-name').innerHTML = required;
     } else if (!alphaExp.test(name)) {
         name = 'Please write a valid name';
        $('uname').classList.add('borderRed');
-    //   header = msg;
-    //    $('invalid-n').classList.add('show');
-    //    $('valid-n').classList.add('hidden');
+       $('nova-name').innerHTML = '<span>Please write a valid name</span>';
+      header = msg;
       //  return false;
     } else {
         $('uname').style.borderColor = 'green';
         $('invalid-n').classList.add('hidden');
         $('valid-n').classList.add('show');
+        $('nova-name').innerHTML = 'Valid';
+        $('nova-name').classList.add('green');
     }
     
-    // else { return true; 
-    //     name.classList.add('borderGreen')}
-    // if (addressType === "") {
-    //     addressType = required;
-    //     header = msg;
-    // }
 //525
 // address type*********************
 if (addressType === "") {
@@ -138,15 +126,19 @@ addressType === yourOtherAddressType;
     } else {
          $('invalid-at').classList.add('hidden');
         $('valid-at').classList.add('show');
+        $('nova-adt').classList.add('green');
+        $('nova-adt').innerHTML = 'Valid';
     }
 // validate the address entry*********************
 var alphaExp = /^[0-9a-zA-Z]+$/;
 if (address === "") {
         address = required;
         header = msg;
+        $('nova-adr').innerHTML = required;
     } else if (!alphaExp.test(address)) {
         address = 'Please write a valid address';
         $('uaddress').style.borderColor = 'red';
+        $('nova-adr').innerHTML = '<span>Please write a valid address</span>';
       //  header = msg;
        // address.classList.add('borderRed');
       //  return false;
@@ -154,6 +146,8 @@ if (address === "") {
         $('uaddress').style.borderColor = 'green';
          $('invalid-a').classList.add('hidden');
         $('valid-a').classList.add('show');
+        $('nova-adr').classList.add('green');
+        $('nova-adr').innerHTML = 'Valid';
     }
 // validate the city entry*********************
 //or: /^[a-zA-Z\s,.'-]{5,}$/;
@@ -161,39 +155,47 @@ var alphaExp = /^[a-zA-Z]+$/;
     if (city === "") {
         city = required;
         header = msg;
+        $('nova-ci').innerHTML = required;
     } else if (!alphaExp.test(city)) {
         city = 'Please write a valid city';
         $('ucity').style.borderColor = 'red';
-     //   header = msg;
+        $('nova-ci').innerHTML = '<span>Please write a valid city</span>';
+      header = msg;
         //('ucity').classList.add('borderRed');
       //  return false;
     } else {
         $('ucity').style.borderColor = 'green';
          $('invalid-c').classList.add('hidden');
         $('valid-c').classList.add('show');
+        $('nova-ci').classList.add('green');
+        $('nova-ci').innerHTML = 'Valid';
     }
 // validate the state entry*********************
 //or: regex = /^[A-Za-z]{2}$/;-for 2 length
 var alphaExp = /^[a-zA-Z]+$/;    
 if (state === "") {
         state = required;
+        $('nova-st').innerHTML = required;
        // isValid = false;
         header = msg;
     } else if ( state.length != 2 ) {
        // $("#state").next().text("Use 2-character code.");
        state = '<span>Use 2-character code.</span>';
        $('ustate').style.borderColor = 'red';
-    //   header = msg;
+       $('nova-st').innerHTML = '<span>Use 2-character code.</span>';
+      header = msg;
        // isValid = false;
     } else if (!alphaExp.test(state)) {
        state = 'Please write a valid state';
-   //    header = msg;
+      header = msg;
        // ('ustate').classList.add('borderRed');
       //  return false;
     } else {
             $('ustate').style.borderColor = 'green';
              $('invalid-s').classList.add('hidden');
         $('valid-s').classList.add('show');
+        $('nova-st').classList.add('green');
+        $('nova-st').innerHTML = 'Valid';
         }
 //     else { 
 //  //   { $("ustate").next().text(""); }
@@ -212,6 +214,7 @@ if (state === "") {
 var numericExpression = /^[0-9]+$/;
 if (zip === "") {
         zip = required;
+        $('nova-z').innerHTML = required;
         //$('invalid').style.display='block';
         // $('valid').style.display='none';
        // isValid = false;
@@ -219,16 +222,20 @@ if (zip === "") {
     } else if ( zip.length != 5 ) {
         zip = "<span>Use 99999 format.</span>";
         $('uzip').style.borderColor = 'red';
-     //   header = msg;
+        header = msg;
+        $('nova-z').innerHTML = '<span>Use 5-character format</span>';
        // isValid = false;
     } else if (!numericExpression.test(zip)) {
         zip = 'Please write a valid zip';
-      //  header = msg;
+        header = msg;
+        $('nova-z').innerHTML = '<span>Please write a valid zip</span>';
         //zip.classList.add('borderRed');
     } else {
         $('uzip').style.borderColor = 'green';
          $('invalid-z').classList.add('hidden');
         $('valid-z').classList.add('show');
+        $('nova-z').classList.add('green');
+        $('nova-z').innerHTML = 'Valid';
     }
 
 
@@ -236,6 +243,7 @@ if (zip === "") {
 if (pizzaType === "") {
     pizzaType = required;
      header = msg;
+     $('nova-ptype').innerHTML = required;
 } else if (pizzaType === "other"){
     var otherPt =   prompt('enter your info here:');
     pizzaType === otherPt;
@@ -246,10 +254,13 @@ else  {
     $('pizza-type').style.borderColor = 'green';
     $('invalid-pt').classList.add('hidden');
    // $('valid-ptype').classList.add('show');
+   $('nova-ptype').classList.add('green');
+   $('nova-ptype').innerHTML = 'Valid';
     }
 if (pizzaSize === "") {
 pizzaSize = required;
  header = msg;
+ $('nova-psize').innerHTML = required;
 } else if (pizzaSize === "other"){
     var otherPs =   prompt('enter your info here:');
     pizzaSize === otherPs;
@@ -257,12 +268,10 @@ pizzaSize = required;
 else {
     $('invalid-ps').classList.add('hidden');
     $('valid-ps').classList.add('show');
+    $('nova-psize').classList.add('green');
+    $('nova-psize').innerHTML = 'Valid';
     }
 
-//61f
-//const pizzaSizeCost = $( "pizza-type").text();
-// ?const pizzaSize = pizzaSizeCost.split(':')[0];
-// const pizzaCost = pizzaSizeCost.split(':')[1];
 
 
 var pizzaSizeInType = {
