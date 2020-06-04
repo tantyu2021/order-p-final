@@ -1,5 +1,4 @@
   //from524
-  
   var $ = function (id) {
     "use strict";
     return window.document.getElementById(id);
@@ -16,7 +15,7 @@ var processOrder = function () {
     header = "";
     html = "";
     required = "<span>Required</span>";
-    msg = "<span>Please fill all required fields</span>";
+    msg = "Table Info";
 // msg = "Please complete all required fields.";
     email = $("uemail").value;
     phone = $("uphone").value;
@@ -32,12 +31,8 @@ var processOrder = function () {
     zip = $('uzip').value;
     requiredT = 'Required!!!'
 
-    //pizzaType = document.getElementsByClassName('pizzaName');//Dough Type:	[object HTMLCollection]
-    //pizzaType = document.getElementsByName('p-type');//[object NodeList]
-    //pizzaType = document.getElementsByName('top-on');--Dough Type:	[object NodeList]
-    pizzaType = $('pizza-type').value;// [object HTMLSelectElement]//or #p-type
-pizzaSize = $('pizza-size').value;
-    //pizzaSize = document.getElementsByClassName('sss');
+    pizzaType = $('pizza-type');//or #p-type
+    pizzaSize = document.getElementsByClassName('sss');
     html_pizza = '';
     //
     // contact = "Text";
@@ -62,22 +57,17 @@ var emailPattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b/;
 //or?:  /^[w-.+]+@[a-zA-Z0-9.]+.[a-zA-Z0-9]{2,4}$/;
     if (email === "") {
         email = required;
-        $('nova-em').innerHTML = required;
-        header = msg;
+        //header = msg;
     } else if ( !emailPattern.test(email) ) {
        // email = 'Must be a valid email';
        email = "<span>Please write a valid email</span>";
-       $('nova-em').innerHTML = '<span>Please write a valid email</span>';
         $('uemail').style.borderColor = 'red';
-        header = msg;
 //isValid = false;
 //return false;
     } else {
         $('uemail').style.borderColor = 'green';
          $('invalid-e').classList.add('hidden');
         $('valid-e').classList.add('show');
-        $('nova-em').classList.add('green');
-        $('nova-em').innerHTML = 'Valid';
        // email.style.borderColor = 'green';
     }
     // else if (inputtext.value.match(emailExp)) {
@@ -90,8 +80,6 @@ var emailPattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b/;
 var numericExpression = /^[0-9]+$/;
     if (phone === "") {
         phone = required;
-        $('nova-p').innerHTML = required;
-        header = msg;
        // $('invalid').style.visibility = 'visible';
     //    $('invalid').style.display = 'block';
     //    $('valid').style.display = 'none';
@@ -101,14 +89,10 @@ var numericExpression = /^[0-9]+$/;
     //    $('valid-p').classList.add('hidden');
     } else if ( phone.length != 10 ) {
         phone = "<span>Use 10 digital format.</span>";
-        $('nova-p').innerHTML = '<span>Use 10 digital format</span>';
         $('uphone').style.borderColor = 'red';
-        header = msg;
        // isValid = false;
     } else if (!numericExpression.test(phone)) {
         phone = 'Please write a valid phone';
-        $('nova-p').innerHTML = '<span>Please write a valid phone</span>';
-        header = msg;
         //zip.classList.add('borderRed');
     } else {
         $('uphone').style.borderColor = 'green';
@@ -117,8 +101,6 @@ var numericExpression = /^[0-9]+$/;
         // $('valid').style.visibility = 'hidden';
         $('invalid-p').classList.add('hidden');
         $('valid-p').classList.add('show');
-        $('nova-p').classList.add('green');
-        $('nova-p').innerHTML = 'Valid';
     }
     // if (country === "") {
     //     country = required;
@@ -132,18 +114,10 @@ var numericExpression = /^[0-9]+$/;
     var alphaExp = /^[a-zA-Z]+$/;
     if (name === "") {
         name = required;
-        header = msg;
         //header = msg;
-       // $('nova-name').classList.add('show');
-        $('nova-name').innerHTML = required;
- //document.getElementsByClassName('invalid-feedback').classList.add('show');
     } else if (!alphaExp.test(name)) {
         name = 'Please write a valid name';
        $('uname').classList.add('borderRed');
-       $('nova-name').innerHTML = '<span>Please write a valid name</span>';
-       header = msg;
-    //document.getElementsByClassName('invalid-feedback').classList.add('show');
-       
     //    $('invalid-n').classList.add('show');
     //    $('valid-n').classList.add('hidden');
       //  return false;
@@ -151,14 +125,6 @@ var numericExpression = /^[0-9]+$/;
         $('uname').style.borderColor = 'green';
         $('invalid-n').classList.add('hidden');
         $('valid-n').classList.add('show');
-
-        $('nova-name').innerHTML = 'Valid';
-        $('nova-name').classList.add('green');
-
-        // $('va-name').classList.add('show');
-        // $('va-name').innerHTML = 'Valid';
-//document.getElementsByClassName('invalid-feedback').classList.add('hidden');
-//document.getElementsByClassName('valid-feedback').classList.add('show');
     }
     
     // else { return true; 
@@ -171,7 +137,6 @@ var numericExpression = /^[0-9]+$/;
 // address type*********************
 if (addressType === "") {
         addressType = required;
-        header = msg;
        // header = msg;
     } 
     else if (addressType === "other"){
@@ -180,81 +145,58 @@ addressType === yourOtherAddressType;
     } else {
          $('invalid-at').classList.add('hidden');
         $('valid-at').classList.add('show');
-        $('nova-adt').classList.add('green');
-        $('nova-adt').innerHTML = 'Valid';
     }
 // validate the address entry*********************
- var regAdd = /^[a-zA-Z0-9\s,.'-]{3,}$/;
-//var alphaExp = /^[0-9a-zA-Z]+$/;
+var alphaExp = /^[0-9a-zA-Z]+$/;
 if (address === "") {
         address = required;
-        header = msg;
         //header = msg;
-        $('nova-adr').innerHTML = required;
-
-    } else if (!regAdd.test(address)) {
+    } else if (!alphaExp.test(address)) {
         address = 'Please write a valid address';
         $('uaddress').style.borderColor = 'red';
-        $('nova-adr').innerHTML = '<span>Please write a valid address</span>';
-        header = msg;
        // address.classList.add('borderRed');
       //  return false;
     } else {
         $('uaddress').style.borderColor = 'green';
          $('invalid-a').classList.add('hidden');
         $('valid-a').classList.add('show');
-        $('nova-adr').classList.add('green');
-        $('nova-adr').innerHTML = 'Valid';
     }
 // validate the city entry*********************
 //or: /^[a-zA-Z\s,.'-]{5,}$/;
 var alphaExp = /^[a-zA-Z]+$/;
     if (city === "") {
         city = required;
-        header = msg;
-        $('nova-ci').innerHTML = required;
        // header = msg;
     } else if (!alphaExp.test(city)) {
         city = 'Please write a valid city';
         $('ucity').style.borderColor = 'red';
-        $('nova-ci').innerHTML = '<span>Please write a valid city</span>';
-        header = msg;
         //('ucity').classList.add('borderRed');
       //  return false;
     } else {
         $('ucity').style.borderColor = 'green';
          $('invalid-c').classList.add('hidden');
         $('valid-c').classList.add('show');
-        $('nova-ci').classList.add('green');
-        $('nova-ci').innerHTML = 'Valid';
     }
 // validate the state entry*********************
 //or: regex = /^[A-Za-z]{2}$/;-for 2 length
 var alphaExp = /^[a-zA-Z]+$/;    
 if (state === "") {
         state = required;
-        $('nova-st').innerHTML = required;
        // isValid = false;
-        header = msg;
+        //header = msg;
     } else if ( state.length != 2 ) {
        // $("#state").next().text("Use 2-character code.");
        state = '<span>Use 2-character code.</span>';
        $('ustate').style.borderColor = 'red';
-       $('nova-st').innerHTML = '<span>Use 2-character code.</span>';
-       header = msg;
        // isValid = false;
     } else if (!alphaExp.test(state)) {
        state = 'Please write a valid state';
-       header = msg;
        // ('ustate').classList.add('borderRed');
       //  return false;
     } else {
             $('ustate').style.borderColor = 'green';
              $('invalid-s').classList.add('hidden');
         $('valid-s').classList.add('show');
-        $('nova-st').classList.add('green');
-        $('nova-st').innerHTML = 'Valid';
-        header = msg;
         }
 //     else { 
 //  //   { $("ustate").next().text(""); }
@@ -273,54 +215,41 @@ if (state === "") {
 var numericExpression = /^[0-9]+$/;
 if (zip === "") {
         zip = required;
-        $('nova-z').innerHTML = required;
         //$('invalid').style.display='block';
         // $('valid').style.display='none';
        // isValid = false;
-        header = msg;
+       // header = msg;
     } else if ( zip.length != 5 ) {
         zip = "<span>Use 99999 format.</span>";
         $('uzip').style.borderColor = 'red';
-        $('nova-z').innerHTML = '<span>Use 5-character format</span>';
-        header = msg;
        // isValid = false;
     } else if (!numericExpression.test(zip)) {
         zip = 'Please write a valid zip';
-        $('nova-z').innerHTML = '<span>Please write a valid zip</span>';
-        header = msg;
         //zip.classList.add('borderRed');
     } else {
         $('uzip').style.borderColor = 'green';
          $('invalid-z').classList.add('hidden');
         $('valid-z').classList.add('show');
-        $('nova-z').classList.add('green');
-        $('nova-z').innerHTML = 'Valid';
     }
 
 
 // pizza*********************
 if (pizzaType === "") {
     pizzaType = required;
-    $('nova-ptype').innerHTML = required;
-     header = msg;
+    // header = msg;
 } else if (pizzaType === "other"){
     var otherPt =   prompt('enter your info here:');
     pizzaType === otherPt;
     $('pizza-type').style.borderColor = 'red';
-    header = msg;
     }
    // else if ("input[name='p-type']:checked") {
 else  {
     $('pizza-type').style.borderColor = 'green';
     $('invalid-pt').classList.add('hidden');
-  $('valid-pt').classList.add('show');
-  $('nova-ptype').classList.add('green');
-  $('nova-ptype').innerHTML = 'Valid';
+   // $('valid-ptype').classList.add('show');
     }
 if (pizzaSize === "") {
 pizzaSize = required;
-header = msg;
-$('nova-psize').innerHTML = required;
 // header = msg;
 } else if (pizzaSize === "other"){
     var otherPs =   prompt('enter your info here:');
@@ -329,9 +258,25 @@ $('nova-psize').innerHTML = required;
 else {
     $('invalid-ps').classList.add('hidden');
     $('valid-ps').classList.add('show');
-    $('nova-psize').classList.add('green');
-  $('nova-psize').innerHTML = 'Valid';
     }
+//61
+//computer choice
+// var compSay;
+// switch(Math.floor(Math.random()*3)) {
+// case 0:
+//   compSay = 'rock';
+//   break;
+// case 1:
+//   compSay = 'scissors';
+//   break;
+// case 2:
+//   compSay = 'paper';
+//   break;
+// }
+// console.log('computer says ',  compSay); 
+// alert('computer says ' + compSay);
+
+
 
 
 //61f
@@ -339,14 +284,20 @@ else {
 // ?const pizzaSize = pizzaSizeCost.split(':')[0];
 // const pizzaCost = pizzaSizeCost.split(':')[1];
 
-// let isVisibleFields = false;
-// function showPizzaSelections() {
-//     if (!isVisibleFields) {
-//       $('pizzaSize').show();
-//       $('addToOrder').show(); //62interaction
-//     }
-//     isVisibleFields = true;
-//   }
+let isVisibleComplements = false;
+
+function showPizzaSelections() {
+    if (!isVisibleComplements) {
+      $('pizza-size-cost').show();
+      //$('#select-sause-div').show();   
+      //$('#select-cheese-div').show();       
+    //   $('#topping-options-first-group').show();
+    //   $('#topping-options-second-group').show();
+      $('add-to-cart-btn').show(); //62interaction
+    }
+
+    isVisibleComplements = true;
+  }
 
 var pizzaSizeInType = {
     'hand-tossed': [{'size': 'Small', 'price': 9.99},
@@ -363,33 +314,6 @@ var pizzaSizeInType = {
 //61*********************************
 //selection option name every pizza in1 
 
-//63
-// if (pizzaType === "Hand Tossed") {
-//     $('hand-div').classList.add('show');
-//     $('template').classList.add('hidden');
-//     $('thin-div').classList.add('hidden');
-//     $('ny-div').classList.add('hidden');
-//     $('free-div').classList.add('hidden');
-// } else if (pizzaType === "Thin Crust"){
-//     $('thin-div').classList.add('show');
-//     $('template').classList.add('hidden');
-//     $('hand-div').classList.add('hidden');
-//     $('ny-div').classList.add('hidden');
-//      $('free-div').classList.add('hidden');
-//     pizzaType === otherPt;
-// } else if (pizzaType === "New York Style"){
-//     $('ny-div').classList.add('show');
-//     $('template').classList.add('hidden');
-//     $('thin-div').classList.add('hidden');
-//     $('free-div').classList.add('hidden');
-//      $('hand-div').classList.add('hidden');
-// } else if (pizzaType === "Gluten Free"){
-//     $('free-div').classList.add('show');;
-//     $('template').classList.add('hidden');
-//     $('thin-div').classList.add('hidden');
-//     $('ny-div').classList.add('hidden');
-//      $('hand-div').classList.add('hidden');
-//     }
 //-select-pizza-size-cost --- pizza-type
 
 //document.getElementsByName("input[name='p-type']").click(function(){
@@ -400,52 +324,56 @@ var pizzaSizeInType = {
     // $('#invalid-dough').hide();
     // $('#invalid-dough').removeClass('is-invalid');
 
-//     const doughChoice = document.querySelectorAll("input[name='p-type']:checked").val();  //value    
-//     // $('pizza-size').children('option:not(:first)').remove();//select ; remove el
-//     $('template').children('option:not(:first)').remove();//select ; remove el
+    const doughChoice = document.querySelectorAll("input[name='p-type']:checked").val();  //value    
+    // $('pizza-size').children('option:not(:first)').remove();//select ; remove el
+    $('template').children('option:not(:first)').remove();//select ; remove el
 
 
-// switch (doughChoice) {
-//     case "hand-tossed":            
-//       for (var p = 0; p < pizzaSizeInType['hand-tossed'].length; p++) {            
-//         $("template").append("<option>"+ pizzaSizeInType['hand-tossed'][p].size + pizzaSizeInType['hand-tossed'][p].price +"</option>"); 
-//       }            
-//       break;
-//     case "thin-crust":                          
-//       for (var p = 0; p < pizzaSizeInType['thin-crust'].length; p++) {            
-//         $("template").append("<option>"+ pizzaSizeInType['thin-crust'][p].size + pizzaSizeInType['thin-crust'][p].price +"</option>"); 
-//       }            
-//       break;
-//     case "new-york":                
-//       for (var p = 0; p < pizzaSizeInType['new-york'].length; p++) {            
-//         $("template").append("<option>"+ pizzaSizeInType['new-york'][p].size + pizzaSizeInType['new-york'][p].price +"</option>"); 
-//       }            
-//       break;
-//     case "gluten-free":                
-//       for (var p = 0; p < pizzaSizeInType['gluten-free'].length; p++) {            
-//         $("template").append("<option>"+ pizzaSizeInType['gluten-free'][p].size + pizzaSizeInType['gluten-free'][p].price +"</option>"); 
- //     }            
- //  }
-
-if (doughChoice === "hand-tossed") {
-$('hand-div').classList.add('show');
-$('template').classList.add('hidden');
-} else if (doughChoice === "thin-crust"){
-$('thin-div').classList.add('show');
-$('template').classList.add('hidden');
-pizzaType === otherPt;
-} else if (doughChoice === "new-york"){
-    $('ny-div').classList.add('show');
-    $('template').classList.add('hidden');
-} else if (doughChoice === "gluten-free"){
-    $('free-div').classList.add('show');;
-    $('template').classList.add('hidden');
+switch (doughChoice) {
+    case "hand-tossed":            
+      for (var p = 0; p < pizzaSizeInType['hand-tossed'].length; p++) {            
+        $("template").append("<option>"+ pizzaSizeInType['hand-tossed'][p].size + pizzaSizeInType['hand-tossed'][p].price +"</option>"); 
+      }            
+      break;
+    case "thin-crust":                          
+      for (var p = 0; p < pizzaSizeInType['thin-crust'].length; p++) {            
+        $("template").append("<option>"+ pizzaSizeInType['thin-crust'][p].size + pizzaSizeInType['thin-crust'][p].price +"</option>"); 
+      }            
+      break;
+    case "new-york":                
+      for (var p = 0; p < pizzaSizeInType['new-york'].length; p++) {            
+        $("template").append("<option>"+ pizzaSizeInType['new-york'][p].size + pizzaSizeInType['new-york'][p].price +"</option>"); 
+      }            
+      break;
+    case "gluten-free":                
+      for (var p = 0; p < pizzaSizeInType['gluten-free'].length; p++) {            
+        $("template").append("<option>"+ pizzaSizeInType['gluten-free'][p].size + pizzaSizeInType['gluten-free'][p].price +"</option>"); 
+      }            
     }
+
+// if (doughChoice === "hand-tossed") {
+// $('hand-div').classList.add('show');
+// $('template').classList.add('hidden');
+// } else if (doughChoice === "thin-crust"){
+// $('thin-div').classList.add('show');
+// $('template').classList.add('hidden');
+// pizzaType === otherPt;
+// } else if (doughChoice === "new-york"){
+//     $('ny-div').classList.add('show');
+//     $('template').classList.add('hidden');
+// } else if (doughChoice === "gluten-free"){
+//     $('free-div').classList.add('show');;
+//     $('template').classList.add('hidden');
+//     }
 
 // else if ("input[name='p-type']:checked") {
 //         $('invalid-pt').classList.add('hidden');
 //     //$('valid-pt').classList.add('show');
 // }
+
+
+
+
 
 }
 
@@ -455,11 +383,6 @@ pizzaType === otherPt;
 document.querySelectorAll('input[name=p-type]').forEach (p => { p.onclick = function() {
     findYourPizza();
 }});  
-
-
-
-
-
 
 // // top-on = p-type  
 // function findYourPizza(){
@@ -561,20 +484,7 @@ function printChecked(){
         document.querySelectorAll('input[name=top-on]').forEach (i => { i.onclick = function() {
             printChecked();
         }});           
-// 63
-// function pizzaTypeChecked(){
-//     var opts=document.getElementsByName('p-type');
-//     var checkedOpts='';
-//     for (var i=0; i<opts.length; i++) {
-//         if (opts[i].type == 'option' && opts[i].checked == true)
-//         checkedOpts += opts[i].value +'\n';
-    
-//         document.getElementById("pizzaType").innerHTML = checkedOpts +'<br>';
-//     }
-//                 }
-//         document.querySelectorAll('option[name=p-type]').forEach (i => { i.onclick = function() {
-//             pizzaTypeChecked();
-//         }});                         
+                
 
 
 //524-pizzabuilding
@@ -627,12 +537,6 @@ html += "<tr><td>Email:</td><td>" + email + "</td></tr>";
 $("delivery_info").innerHTML = html;
 //    } 
   //  else {$("order_form").submit();}
-
-  $("order_header").innerHTML = header;
-if (header === msg) {
-} else {
-    $("order_form").submit();
-}
 };
 
 window.addEventListener("load", function () {
@@ -645,7 +549,7 @@ window.addEventListener("load", function () {
 
 
 
-// 612020
+// 612020/////////////////////////////////////////////
 // 61- BILLING PAGE*********************
 // 61- BILLING PAGE*********************
 // 61- BILLING PAGE*********************
@@ -662,6 +566,7 @@ required = "<span>Required</span>";
 
 header = "";
     html = "";
+    required = "<span>Required</span>";
     msg = "Please fill all required fields.";
 //***validation 
 // 61- fullname validation*********************
@@ -672,6 +577,7 @@ if (fullName === "") {
    // fullName = required;
     $('nova-name').innerHTML = required;
     header = msg;
+    //header = msg;
 } else if (!regFullName.test(fullName)) {
    // fullName = 'Please write a valid name';
    $('f-name').classList.add('borderRed');
@@ -686,6 +592,9 @@ if (fullName === "") {
     $('valid-n').classList.add('show');
     $('nova-name').classList.add('hidden');
     $('va-name').innerHTML = 'Valid';
+
+    // $('invalid-z').classList.add('hidden');
+    // $('valid-z').classList.add('show');
 }
 // 61- creditcard validation*********************
 //var numericExpression = /^[0-9]+$/;
@@ -722,6 +631,7 @@ var reqExpCvc = /^[0-9]{3}?$/;
         $('ucvc').style.borderColor = 'red';
         $('nova-cvc').innerHTML =  "<span>Please write a valid CVC</span>";
         header = msg;
+        //zip.classList.add('borderRed');
     } else {
         $('ucvc').style.borderColor = 'green';
         $('invalid-cvc').classList.add('hidden');
@@ -750,6 +660,8 @@ expYear === otherY;
     $('nova-ye').classList.add('hidden');
     $('va-ye').innerHTML = 'Valid';
 }
+
+
 $("billing_header").innerHTML = header;
 if (header === msg) {
 } else {

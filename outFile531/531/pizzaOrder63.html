@@ -7,7 +7,6 @@
     <title>FOOD DELIVERY. Pizza Order in Bootstrap</title>
 <!-- font awesome 521-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,12 +21,32 @@
             background-color: #444!important;
         }
         body {
-            max-width: 1200px;
+            /* max-width: 1200px; */
             margin: 0 auto;
         }
 span {color: red;}
 .green {color: green;}
+.borderGreen {border-color: green;}
+.borderRed {border-color: red;}
 .right {float: right;}
+article.left531 {font-size: 70%;}
+.hidden {display: none;}
+.show {display: block;}
+
+/* 61 */
+/* .sticky {display: none;} */
+#order-in-sticky, #delivery-in-sticky { display: none;}
+.sticky {max-width: 90%; top: 60px;}
+@media screen and (min-width: 420px) {
+    /* .sticky {max-width: 25%;} */
+    /* #order-in-sticky { display: block; }
+    .sticky {display: block;}*/
+} 
+@media screen and (min-width: 770px) {
+    .sticky {max-width: 25%; top: 90px;}
+    #order-in-sticky,   #delivery-in-sticky { display: block;}
+    /* .sticky {display: block;} */
+}
        /* .sticky {
   position: -webkit-sticky;
   position: sticky;
@@ -69,55 +88,37 @@ span {color: red;}
 
 <!-- === start: leftSide article================== --> 
 <!-- === start: leftSide article ////////////////-->  
-<article class="col-md-4 "  >
+<article class="col-md-4 left531"  >
     <hr><hr>
 
-    <!-- <div class="sticky" style="position: fixed; top: 90px; z-index: 2; width: 213.775px; height: auto;"> -->
-    <div class="sticky" style="position: fixed; top: 90px; z-index: 2; width: 25%; height: auto;">
+    <!-- <div class="sticky" style="position: fixed; top: 90px; z-index: 2; width: 213.775px; height: auto;"> width: 25%; top: 90px;-->
+    <div class="sticky" style="position: fixed;  z-index: 2; height: auto;">
 <!--Scrollspy-->
 <div id="scrollspy">
-
-<div class="form-group" >  
-    <input type="text" class="form-control" id="price" placeholder="Price: $0" name="price" >  </div>
-    <br>
 <!--523- textearea 522 -https://mdbootstrap.com/docs/jquery/forms/textarea/ -->
 <div class="md-form">
-  <textarea id="form7" class="md-textarea form-control" rows="3">Your order:
-
-    
+  <textarea id="form7" class="md-textarea form-control" rows="1">Price: $0 
   </textarea>
-  <label for="form7">Material textarea</label>
+  <label for="form7"></label>
   </div>
-  <!-- <table id="textarea_info"></table> -->
 
 <!-- 523 -->
- <div style="background-color: #fff; width: 100%; border-radius: 4px;">
-  <p>Your Order: 
-  <span id="yourOrder1">Empty</span></p>
-  <!-- <table id="pizza_info" class=" bg-light "></table> -->
-<!-- <h5 id="yourOrder">&nbsp;</h5> -->
-<table id="pizza_info"></table>
-<!-- fromlab13-524 -->
+ <div id="order-in-sticky" style="background-color: #fff; width: 100%; border-radius: 4px;">
+  <p>Your Order: <br></p>
 <h5 id="order_header">&nbsp;</h5>
 <table id="order_info"></table>
-
-  <!-- <h2 id="table_title">&nbsp;</h2>
-  <table id="table_info"></table> -->
+<p id="checkValue"></p>
 </div>
 
-      </div><!--Scrollspy-->
+<!-- 531 -->
+<div id="delivery-in-sticky" style="background-color: #ccc; width: 100%; border-radius: 4px;">
+    <p>Delivery Address: </p>
+<table id="delivery_info"></table>
+</div>
+    </div><!--Scrollspy-->
     </div> <!--/sticky-->
 
 
-
-    <!-- <div class="form-group" >
-        <input type="text" class="form-control" id="price" placeholder="Price: $0" name="price" >
-        <br>
-        <label for="yourOrder"  class=" text-light " >Your Order: </label>
-        <input type="text" class="form-control" id="yourOrder" placeholder="Empty " name="yourOrder" >
-        <h4 id="yourOrder1"></h4>
-        <table id="pizza_info" class=" bg-light "></table>
-    </div> -->
 </article>
  <!-- ======================================== -->  
  <!-- start rightSide article -->         
@@ -144,10 +145,12 @@ span {color: red;}
 <!-- //////////////////////////////////////// action="payment522.html" method="GET"
 -->
 <!-- <form  id="buildPizza" class="needs-validation" novalidate> -->
-<form action="register_account.html" method="get" id="order_form">
+<form action="#" method="get" id="order_form">
+
     <div class="form-group">
         <label for="uname">Name</label>
-        <span><i class="far fa-thumbs-down right"></i></span>
+        <span id='invalid-n' ><i class="far fa-thumbs-down right"></i></span>
+        <span id='valid-n' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
         <input type="text" class="form-control" id="uname" placeholder="Enter your name" name="uname" required>
         <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -156,7 +159,8 @@ span {color: red;}
     <!-- Bootstrap Select List; <div class="form-group">; selected -->
 <div class="form-group">
     <label for="address-type">Address Type:</label>
-    <span><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-at'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-at' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <select class="form-control" id="address-type">
       <option value="">- Select Address Type here...-</option>
       <option>house</option>
@@ -174,7 +178,8 @@ span {color: red;}
 
 <div class="form-group">
     <label for="uaddress">Street Address (Format: 123 Main Street)</label>
-    <span><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-a'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-a' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <input type="text" class="form-control" id="uaddress" placeholder="Enter your address" name="uaddress" required>
     <div class="valid-feedback">Valid. <i class="far fa-thumbs-up"></i></div>
     <div class="invalid-feedback">Please fill out this field. <i class="far fa-thumbs-down "></i></div>
@@ -182,7 +187,7 @@ span {color: red;}
 
 <div class="form-group">
     <label for="uapartment">Apartment Number (optional)</label>
-    <input type="text" class="form-control" id="uapartment" placeholder="" name="uapartment">
+    <input type="text" class="form-control" id="uapartment" placeholder="" name="uapartment" required>
 </div>
 
 
@@ -195,16 +200,17 @@ span {color: red;}
 
 <div class="form-group">
     <label for="ucity">City</label>
-    <span><i class="far fa-thumbs-down right"></i></span>
-    <input type="text" class="form-control" id="ucity" placeholder="City" name="ucity" >
-    <!-- required -->
+    <span id='invalid-c'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-c' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
+    <input type="text" class="form-control" id="ucity" placeholder="City" name="ucity"  required>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
 </div>
 
 <div class="form-group">
     <label for="ustate">State (Format:CA)</label>
-    <span><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-s'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-s' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <input type="text" class="form-control" id="ustate" placeholder="state" name="ustate" required>
      <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -212,7 +218,9 @@ span {color: red;}
 
 <div class="form-group">
     <label for="uzip">Zip Code (Format:12345 or 12345-1234)</label>
-    <span><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-z'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-z' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
+    <!-- <span id='valid' style="display: none;"><i class="far fa-thumbs-up right green"></i></span> -->
     <input type="text" class="form-control" id="uzip" placeholder="zip code" name="uzip" required>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -220,7 +228,8 @@ span {color: red;}
 
 <div class="form-group">
     <label for="uphone">Phone Number Format: (619) 123-4567</label>
-    <span><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-p'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-p'  class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <input type="text" class="form-control" id="uphone" placeholder="... ...-...." name="uphone" required>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -228,7 +237,8 @@ span {color: red;}
 
 <div class="form-group">
     <label for="uemail">Email (hungryguy@pizzafuns.com)</label>
-    <span><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-e'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-e' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <input type="text" class="form-control mb-4" id="uemail" placeholder="Enter your email" name="uemail" required>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
         <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -241,13 +251,14 @@ span {color: red;}
 
 <div class="form-group">
     <label for="pizza-type">Type of dough</label>
-    <span><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-pt'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid--pt' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <select class="form-control" id="pizza-type">
         <option value="">- select a dough type here... -</option>
-        <option>Hand Tossed</option>
-        <option>Thin Crust</option>
-        <option>New York Style</option>
-        <option>Gluten Free</option>
+        <option name="p-type">Hand Tossed</option>
+        <option name="p-type">Thin Crust</option>
+        <option name="p-type">New York Style</option>
+        <option name="p-type">Gluten Free</option>
     </select>
     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
     <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
@@ -258,9 +269,11 @@ span {color: red;}
 
 <div class="form-group">
     <label for="pizza-size">Size and Cost:</label>
-    <span><i class="far fa-thumbs-down right"></i></span>
+    <span id='invalid-ps'><i class="far fa-thumbs-down right"></i></span>
+    <span id='valid-ps' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <select class="form-control" id="pizza-size">
         <option value="">- Select Pizza Size here...-</option>
+        <option>small ($9.99)</option>
         <option>large ($16.99)</option>
         <option>extralarge ($19.99)</option>
         <!-- <option>3</option>
@@ -350,7 +363,6 @@ span {color: red;}
 
 <input type="button" class="btn btn-primary mb-4 mt-4   btn-block" id="order" value="Finished Building Pizza">
 
-<!-- <button type="submit" class="btn btn-primary mb-4 mt-4   btn-block" id="finished">Finished Building Pizza</button>     -->
 </form>
 <!-- /form -->
 
@@ -381,7 +393,8 @@ span {color: red;}
         </article> <!-- end rightSide article -->
     </div>
     
-    <script src="pizzaOrder531.js"></script>
+    <!-- <script src="pizzaOrder531.js"></script> -->
+    <script src="pizzaOrder531_validation.js"></script>
 <!-- ========================================== -->    
     
     <!-- div.row>article.col-sm-6.col-md-4*6>h3{Sub heading}+p>lorem -->
@@ -398,13 +411,12 @@ span {color: red;}
             <h3>New York Style Pizza</h3>
             <p>Some information about this particular type of dough pizza</p>
         </article>
- 
-    </div> <!-- end row -->
+    </div> <!-- /row for last -->
+
 </div> <!-- end container -->
 
-<!-- <nav class="navbar bg-dark navbar-dark navbar-expand-sm fixed-top"> -->
 <footer class="text-center">
-    <p class="small text-light p-4 ">copyright 2020</p>
+    <p class="small text-light p-4 ">tiana-mona production 2020</p>
 </footer>
 
     
