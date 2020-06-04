@@ -569,27 +569,43 @@ html += "<tr><td>Phone:</td><td>" + phone + "</td></tr>";
 html += "<tr><td>Email:</td><td>" + email + "</td></tr>";
 $("delivery_info").innerHTML = html;
 
-
 //   $("order_header").innerHTML = header;
 // if (header === msg) {
 // } else {
 //     $("order_form").submit();
 // }
 // };
-let stayOrGo = "n";
+
+//2-64
+let stayOrGo = "y";
 $("order_header").innerHTML = header;
 if (header === msg) {
-} else if (stayOrGo === "n"){
+} else if (stayOrGo === "y"){ 
+    $("order_form").submit();
     stayOrGo = window.prompt("Are you sure (y/n)?"); 
     // alert('Are you sure?');
-    //$("order_form").submit();
-//} if (stayOrGo === 'n') {
+  
+} else if(stayOrGo === "n") {
     processOrder;
-}else  if (stayOrGo === "y"){
-    //window.alert("Thank you for your order");
-    $("order_form").submit();
 }
 };
+
+// let stayOrGo = "n";
+// $("order_header").innerHTML = header;
+// if (header === msg) {
+// } else if (stayOrGo === "n"){  //else if  while
+//     stayOrGo = window.prompt("Are you sure (y/n)?"); 
+//     // alert('Are you sure?');
+//     //$("order_form").submit();
+// //} if (stayOrGo === 'n') {
+//     processOrder;
+// } else if(stayOrGo === "y") // if
+// //else 
+// {
+//     //window.alert("Thank you for your order");
+//     $("order_form").submit();
+// }
+// };
 
 window.addEventListener("load", function () {
     "use strict";
@@ -599,7 +615,7 @@ window.addEventListener("load", function () {
 
 // let pAgain = "y";
 // while (pAgain === "y") {
-//     pGame();
+//     processOrder// pGame();
 //     pAgain = window.prompt("Do you want again (y/n)?")      
 // }
 // window.alert("Thank you ");
