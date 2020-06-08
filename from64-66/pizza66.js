@@ -181,6 +181,7 @@ function createMenuItem(name) {
     option.textContent = name;option
     return option;
 }
+pizzaType = $('pizza-type');
 const menu = document.querySelector('#pizza-size');
 switch(pizzaType) {
     case "Hand Tossed": 
