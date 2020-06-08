@@ -5,6 +5,218 @@
     return window.document.getElementById(id);
 };
 
+// 531-67
+function printChecked(){
+    var items=document.getElementsByName('top-on');
+    var checkedItems='';
+    for (var i=0; i<items.length; i++) {
+        if (items[i].type == 'checkbox' && items[i].checked == true)
+        checkedItems += items[i].value +'\n';
+    
+        document.getElementById("checkValue").innerHTML = checkedItems +'<br>';
+
+// var toppingTypeCost = 0;
+// var toppingsChecked = document.querySelectorAll("input:checked").length;
+// console.log(toppingsChecked);
+// toppingTypeCost  =  toppingsChecked * .99;
+totalPrice();
+    }
+                }
+        document.querySelectorAll('input[name=top-on]').forEach (i => { i.onclick = function() {
+            printChecked();
+        }});   
+
+// 63-67
+var pizzaType67 = function pizzaTypeSelected(){
+    var pizzaType = $('pizza-type').value;
+    $('selectValue_pizza').innerHTML = 'Dough Type: ' + pizzaType + '<br>';
+                }
+$('pizza-type').addEventListener('click',pizzaType67);
+
+// 67
+var pizzaSize67 = function pizzaSizeSelected(){
+    var pizzaSize = $('pizza-size').value;
+    $('selectValue_size').innerHTML = 'Pizza Type: ' + pizzaSize + '<br>';
+//     var costPizza = 0;
+// if (pizzaSize === "small ($9.99)" ) {
+// costPizza = 9.99;
+// } else if (pizzaSize === "large ($16.99)") {
+// costPizza = 16.99;
+// }else if (pizzaSize === "extralarge ($19.99)") {
+// costPizza = 19.99;
+// }
+totalPrice();
+                }
+$('pizza-size').addEventListener('click',pizzaSize67);
+
+//67
+var cheesType67 = function cheesTypeSelected(){
+    var cheesType = $('chees-type').value;
+    $('selectValue_chees').innerHTML = 'cheese Type: ' + cheesType + '<br>';
+//     var costChees = 0;
+// if (cheesType === "Light (no charge)" ) {
+// costChees = 0;
+// } else if (cheesType === "Normal (no charge)") {
+// costChees = 0;
+// }else if (cheesType === "Extra (+$2.99)") {
+// costChees = 2.99;
+// }else if (cheesType === "Double (+3.99)") {
+// costChees = 3.99;
+// }
+totalPrice();
+                }
+$('chees-type').addEventListener('click',cheesType67);
+
+//67
+var sauceType67 = function sauceTypeSelected(){
+    var sauceType = $('sauce-type').value;
+$('selectValue_sauce').innerHTML = 'Sauce Type: ' + sauceType;
+// var costSauce = 0;
+// if (sauceType === "Light Tomato(no charge)" ) {
+// costSauce = 0;
+// } else if (sauceType === "Regular Tomato (no charge)") {
+// costSauce = 0;
+// }else if (sauceType === "Hearty Tomato: +$0.99") {
+// costSauce = 0.99;
+// }else if (sauceType === "BBQ Sauce: +$1.99") {
+// costSauce = 1.99;
+// }
+totalPrice();
+                }
+$('sauce-type').addEventListener('click',sauceType67);
+
+
+function totalPrice() {
+    //var toppingCost = totalToppings * .99;
+    //var endPrice = crustPrice + cheesePrice + saucePrice + toppingCost;
+    var sauceType = $('sauce-type').value;
+    var costSauce = 0;
+    if (sauceType === "Light Tomato(no charge)" ) {
+    costSauce = 0;
+    } else if (sauceType === "Regular Tomato (no charge)") {
+    costSauce = 0;
+    }else if (sauceType === "Hearty Tomato: +$0.99") {
+    costSauce = 0.99;
+    }else if (sauceType === "BBQ Sauce: +$1.99") {
+    costSauce = 1.99;
+    }
+    var cheesType = $('chees-type').value;
+    var costChees = 0;
+if (cheesType === "Light (no charge)" ) {
+costChees = 0;
+} else if (cheesType === "Normal (no charge)") {
+costChees = 0;
+}else if (cheesType === "Extra (+$2.99)") {
+costChees = 2.99;
+}else if (cheesType === "Double (+3.99)") {
+costChees = 3.99;
+}
+var pizzaSize = $('pizza-size').value;
+var costPizza = 0;
+if (pizzaSize === "small ($9.99)" ) {
+costPizza = 9.99;
+} else if (pizzaSize === "large ($16.99)") {
+costPizza = 16.99;
+}else if (pizzaSize === "extralarge ($19.99)") {
+costPizza = 19.99;
+}
+var toppingTypeCost = 0;
+var toppingsChecked = document.querySelectorAll("input:checked").length;
+console.log(toppingsChecked);
+toppingTypeCost  =  toppingsChecked * .99;
+    var priceTotal = costChees + costSauce + toppingTypeCost + costPizza;
+    $('total-price67').innerHTML = 'price: ' + priceTotal;
+    //$('total-price67').text(priceTotal.toFixed(2));
+}
+ 
+pizzaSize = $('pizza-size').value;
+cheesType = $('chees-type').value;
+sauceType = $('sauce-type').value;
+//toppings = $('top-on').value;
+toppings = document.getElementsByName('top-on').value;
+
+
+var costChees = 0;
+if (cheesType === "Light (no charge)" ) {
+costChees = 0;
+} else if (cheesType === "Normal (no charge)") {
+costChees = 0;
+}else if (cheesType === "Extra (+$2.99)") {
+costChees = 2.99;
+}else if (cheesType === "Double (+3.99)") {
+costChees = 3.99;
+}
+
+var costSauce = 0;
+if (sauceType === "Light Tomato(no charge)" ) {
+costSauce = 0;
+} else if (sauceType === "Regular Tomato (no charge)") {
+costSauce = 0;
+}else if (sauceType === "Hearty Tomato: +$0.99") {
+costSauce = 0.99;
+}else if (sauceType === "BBQ Sauce: +$1.99") {
+costSauce = 1.99;
+}
+
+var costPizza = 0;
+if (pizzaSize === "small ($9.99)" ) {
+costPizza = 9.99;
+} else if (pizzaSize === "large ($16.99)") {
+costPizza = 16.99;
+}else if (pizzaSize === "extralarge ($19.99)") {
+costPizza = 19.99;
+}
+
+//531
+var toppingTypeCost = 0;
+var toppingsChecked = document.querySelectorAll("input:checked").length;
+var toppingTypeCost  =  toppingsChecked * .99;
+//var priceTotal = 0;
+
+var priceTotal = costChees + costSauce + toppingTypeCost + costPizza;
+
+//65
+function createMenuItem(name) {
+    let option = document.createElement('option');
+    option.textContent = name;option
+    return option;
+}
+const menu = document.querySelector('#pizza-size');
+switch(pizzaType) {
+    case "Hand Tossed": 
+menu.appendChild(createMenuItem('Small: $9.99'));
+menu.appendChild(createMenuItem('Medium: $12.99'));
+menu.appendChild(createMenuItem('Large: $14.99'));
+      break;
+    case "Thin Crust":
+menu.appendChild(createMenuItem('Medium: $11.99'));
+menu.appendChild(createMenuItem('Large: $13.99'));
+      break;
+    case "New York Style":
+menu.appendChild(createMenuItem('Large: $16.99'));
+menu.appendChild(createMenuItem('Extralarge: $19.99'));
+      break;
+    case "Gluten Free":
+menu.appendChild(createMenuItem('Small: $10.99'));
+    break;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var processOrder = function () {
     "use strict";
     var header, html, required, msg, email, phone,  
@@ -34,8 +246,8 @@ var processOrder = function () {
 
     //pizzaType = document.getElementsByClassName('pizzaName');//Dough Type:	[object HTMLCollection]
     //pizzaType = document.getElementsByName('p-type');//[object NodeList]
-    //pizzaType = document.getElementsByName('top-on');--Dough Type:	[object NodeList]
-    pizzaType = $('pizza-type').value;// [object HTMLSelectElement]//or #p-type
+   
+    pizzaType = $('pizza-type').value;// [object HTMLSelectElement]
 pizzaSize = $('pizza-size').value;
     //pizzaSize = document.getElementsByClassName('sss');
     html_pizza = '';
@@ -164,10 +376,9 @@ if (addressType === "") {
     } 
     else if (addressType === "other"){
 // var yourOtherAddressType =   prompt('Please enter your Address Type here:');
-// addressType === yourOtherAddressType;
+//addressType === yourOtherAddressType;
+// addressType = $('otherInput').value;
 $('otherInput').classList.add('show');
-// var other = $('otherInput');
-// addressType = other;
     } else {
          $('invalid-at').classList.add('hidden');
         $('valid-at').classList.add('show');
@@ -530,12 +741,12 @@ function printChecked(){
 // 63
 function pizzaTypeSelected(){
     var opts=document.getElementsByName('p-type');
-    var selectedOpts='';
+    var selectedOpt='';
     for (var i=0; i<opts.length; i++) {
         if (opts[i].type == 'option' && opts[i].selected == true)
-        selectedOpts += opts[i].value +'\n';
+        selectedOpt += opts[i].value +'\n';
     
-        document.getElementById("selectValue").innerHTML = selectedOpts +'<br>';
+        document.getElementById("selectValue").innerHTML = selectedOpt +'<br>';
     }
                 }
 document.querySelectorAll('option[name=p-type]').forEach (i => { i.onclick = function() {
@@ -572,6 +783,8 @@ html += "<tr><td>Phone:</td><td>" + phone + "</td></tr>";
 html += "<tr><td>Email:</td><td>" + email + "</td></tr>";
 $("delivery_info").innerHTML = html;
 
+
+$('pre').classList.add('hidden');
 //   $("order_header").innerHTML = header;
 // if (header === msg) {
 // } else {
