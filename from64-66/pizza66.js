@@ -219,6 +219,10 @@ menu.appendChild(createMenuItem('Small: $10.99'));
 
 
 var processOrder = function () {
+    //$('pre').classList.add('hidden');
+    $("uname").focus();
+    $('personal').classList.add('show');
+    //$('selecting').classList.add('hidden')
     "use strict";
     var header, html, required, msg, email, phone,  
     //524-531-country, contact,terms,
