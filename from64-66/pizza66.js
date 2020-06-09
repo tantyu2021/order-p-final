@@ -801,15 +801,14 @@ $('pre').classList.add('hidden');
 let stayOrGo = "y";
 $("order_header").innerHTML = header;
 if (header === msg) {
-} else if (stayOrGo === "y"){ 
-    $("order_form").submit();
-    stayOrGo = window.prompt("Are you sure (y/n)?"); 
+} else { //if (stayOrGo === "y")
+    //$("order_form").submit();
+    stayOrGo = window.alert("Please continue with payment details"); 
+    //stayOrGo = window.prompt("Are you sure (y/n)?"); 
     // alert('Are you sure?');
-  
-} else if (stayOrGo === "n") 
-//if(stayOrGo === "n") 
-{
-    processOrder;
+    $("f-name").focus();
+    $('billingList').classList.add('show');
+     $('pageOne').classList.add('hidden');
 }
 };
 
@@ -862,7 +861,7 @@ required = "<span>Required</span>";
 
 header = "";
     html = "";
-    msg = "Please fill all required fields.";
+    msg = "<span>Please fill all required fields</span>";
 //***validation 
 // 61- fullname validation*********************
 //or: regex = /^[A-Za-z]([-']?[A-Za-z]+)*( [A-Za-z]([-']?[A-Za-z]+)*)+$/;      
@@ -870,22 +869,24 @@ var regFullName = /^\b[A-Z]+.+[?^ ][A-Z].{1,19}|\b[A-Z]+.+[?^,][A-Z].{1,19}/;
 //var alphaExp = /^[a-zA-Z]+$/;
 if (fullName === "") {
    // fullName = required;
-    $('nova-name').innerHTML = required;
+    $('nova-fname').innerHTML = required;
     header = msg;
 } else if (!regFullName.test(fullName)) {
    // fullName = 'Please write a valid name';
    $('f-name').classList.add('borderRed');
-   $('nova-name').innerHTML = 'Please write a valid name';
+   $('nova-fname').innerHTML = '<span>Please write a valid name</span>';
    header = msg;
 //    $('invalid-n').classList.add('show');
 //    $('valid-n').classList.add('hidden');
   //  return false;
 } else {
     $('f-name').style.borderColor = 'green';
-    $('invalid-n').classList.add('hidden');
-    $('valid-n').classList.add('show');
-    $('nova-name').classList.add('hidden');
-    $('va-name').innerHTML = 'Valid';
+    $('invalid-f-n').classList.add('hidden');
+    $('valid-f-n').classList.add('show');
+    // $('nova-fname').classList.add('hidden');
+    // $('va-name').innerHTML = 'Valid';
+    $('nova-fname').innerHTML = 'Valid';
+    $('nova-fname').classList.add('green');
 }
 // 61- creditcard validation*********************
 //var numericExpression = /^[0-9]+$/;
@@ -950,10 +951,12 @@ expYear === otherY;
     $('nova-ye').classList.add('hidden');
     $('va-ye').innerHTML = 'Valid';
 }
-$("billing_header").innerHTML = header;
+var stayOrGo;
+$("order_header").innerHTML = header;
 if (header === msg) {
 } else {
     $("billing_form").submit();
+    stayOrGo = window.alert("your pizza is on its way!"); 
 }
 //61
   //5 or 9 digit zip

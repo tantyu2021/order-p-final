@@ -13,7 +13,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-    <!-- <script src="js/your_pizza.js"></script> -->
 
     <style>
  nav, footer { background-color: #444!important;}
@@ -56,8 +55,9 @@ article.left531 {font-size: 70%;}
 
 
 <body class="bg-dark">
-<!-- <img src="imagesFood/foodPizza4.jpg" alt="pizza" class="img-fluid headerPic"> -->
-<!-- <nav class="navbar bg-dark navbar-dark navbar-expand-sm fixed-top"> -->
+    <div id="finishingImg" class="hidden">
+        <img src="imagesFood/foodPizza4.jpg" alt="pizza" class="img-fluid headerPic"></div>
+
 <nav class="navbar  navbar-dark navbar-expand-sm fixed-top">
     <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavBar" aria-controls="myNavBar" aria-expanded="false" aria-label="navigation toggle">
@@ -112,13 +112,14 @@ article.left531 {font-size: 70%;}
 </div><!--/end pre-->
 </div>
 
+<!-- <h3 id="billing_header"> <span> &nbsp;</span></h3> -->
 <h4 id="order_header"> <span> &nbsp;</span></h4>
 <!-- 531 -->
 <div id="delivery-in-sticky" style="background-color: #ccc; width: 100%; border-radius: 4px;">
     <p>Delivery Address: </p>
 <table id="delivery_info"></table>
 
-<h3 id="billing_header"> <span> &nbsp;</span></h3>
+
 <div id="billing_info"></div>
 </div>
     </div><!--Scrollspy-->
@@ -150,20 +151,17 @@ article.left531 {font-size: 70%;}
 <div id="personal" class="hidden">
 <h3>Personal Details</h3>
 <!-- //////////////////////////////////////// -->
-<!-- <form  id="buildPizza" class="needs-validation" novalidate> -->
-<form action="pizzaBilling63.html" method="get" id="order_form" class="needs-validation">
+<!-- <form action="pizzaBilling63.html" method="get" id="order_form" class="needs-validation"> -->
+    <form action="#" method="#" id="order_form" class="needs-validation">
 
     <div class="form-group">
         <label for="uname">Name</label>
         <span id='invalid-n' ><i class="far fa-thumbs-down right"></i></span>
         <span id='valid-n' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
         <input type="text" class="form-control" id="uname" placeholder="Enter your name" name="uname" required>
-        <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
-        <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
         <p id="nova-name" ></p>   <p id="va-name"></p>
     </div>
 
-    <!-- Bootstrap Select List; <div class="form-group">; selected -->
 <div class="form-group">
     <label for="address-type">Address Type:</label>
     <span id='invalid-at'><i class="far fa-thumbs-down right"></i></span>
@@ -179,9 +177,6 @@ article.left531 {font-size: 70%;}
       <option id="other">other</option>
     </select>
     <input type="text" class="form-control hidden" id="otherInput" placeholder="Enter your other address type">
-    <!-- style="display: none;" -->
-    <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
-    <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
     <p id="nova-adt" ></p> 
   </div>
 
@@ -191,8 +186,6 @@ article.left531 {font-size: 70%;}
     <span id='invalid-a'><i class="far fa-thumbs-down right"></i></span>
     <span id='valid-a' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <input type="text" class="form-control" id="uaddress" placeholder="Enter your address" name="uaddress" required>
-    <div class="valid-feedback">Valid. <i class="far fa-thumbs-up"></i></div>
-    <div class="invalid-feedback">Please fill out this field. <i class="far fa-thumbs-down "></i></div>
     <p id="nova-adr" ></p> 
 </div>
 
@@ -201,12 +194,9 @@ article.left531 {font-size: 70%;}
     <input type="text" class="form-control" id="uapartment" placeholder="" name="uapartment" required>
 </div>
 
-
 <div class="form-group">
     <label for="room-number">Suite or Room Number (optional)</label>
     <input type="text" class="form-control" id="room-number" placeholder="room-number" name="room-number">
-    <!-- <div class="valid-feedback">Valid.</div>
-    <div class="invalid-feedback">Please fill out this field.</div> -->
 </div>
 
 <div class="form-group">
@@ -214,8 +204,6 @@ article.left531 {font-size: 70%;}
     <span id='invalid-c'><i class="far fa-thumbs-down right"></i></span>
     <span id='valid-c' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <input type="text" class="form-control" id="ucity" placeholder="City" name="ucity"  required>
-    <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
-        <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
         <p id="nova-ci" ></p> 
 </div>
 
@@ -224,8 +212,6 @@ article.left531 {font-size: 70%;}
     <span id='invalid-s'><i class="far fa-thumbs-down right"></i></span>
     <span id='valid-s' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <input type="text" class="form-control" id="ustate" placeholder="state" name="ustate" required>
-     <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
-        <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
         <p id="nova-st" ></p> 
 </div>
 
@@ -233,10 +219,7 @@ article.left531 {font-size: 70%;}
     <label for="uzip">Zip Code (Format:12345 or 12345-1234)</label>
     <span id='invalid-z'><i class="far fa-thumbs-down right"></i></span>
     <span id='valid-z' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
-    <!-- <span id='valid' style="display: none;"><i class="far fa-thumbs-up right green"></i></span> -->
     <input type="text" class="form-control" id="uzip" placeholder="zip code" name="uzip" required>
-    <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
-        <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
         <p id="nova-z" ></p> 
 </div>
 
@@ -245,8 +228,6 @@ article.left531 {font-size: 70%;}
     <span id='invalid-p'><i class="far fa-thumbs-down right"></i></span>
     <span id='valid-p'  class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <input type="text" class="form-control" id="uphone" placeholder="... ...-...." name="uphone" required>
-    <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
-        <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
         <p id="nova-p" ></p> 
 </div>
 
@@ -255,8 +236,6 @@ article.left531 {font-size: 70%;}
     <span id='invalid-e'><i class="far fa-thumbs-down right"></i></span>
     <span id='valid-e' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <input type="text" class="form-control mb-4" id="uemail" placeholder="Enter your email" name="uemail" required>
-    <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
-        <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
         <p id="nova-em" ></p>
 </div>
 </div><!--/end personal-->
@@ -278,8 +257,6 @@ article.left531 {font-size: 70%;}
         <option name="p-type" class="pizzaName">New York Style</option>
         <option name="p-type" class="pizzaName">Gluten Free</option>
     </select>
-    <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
-    <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
     <p id="nova-ptype" ></p>
 </div>
 
@@ -313,10 +290,9 @@ article.left531 {font-size: 70%;}
         </div> -->
       
     </select>
-    <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
-    <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
     <p id="nova-psize" ></p>
     </div>
+
 <!-- 61 -->
 <!-- 530 -->
 <!-- <br> - not enougph63
@@ -379,27 +355,21 @@ article.left531 {font-size: 70%;}
 <div class="form-group">
 <label for="chees-type">Type of cheese  <small>(optional)</small>:</label>
 <select class="form-control" id="chees-type">
-<!-- <option value="" >- select chees type here...-</option> -->
     <option selected >Normal (no charge)</option>
     <option>Light (no charge)</option>
     <option>Extra (+$2.99)</option>
     <option>Double (+3.99)</option>
 </select>
-<div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
-<div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
 </div>
 
 <div class="form-group">
     <label for="sauce-type">Type of sauce  <small>(optional)</small>:</label>
     <select class="form-control" id="sauce-type">
- <!-- <option value="" >- select sauce type here...-</option> -->
         <option  selected>Regular Tomato (no charge)</option>
         <option>Light Tomato(no charge)</option>
         <option >Hearty Tomato: +$0.99</option>
         <option >BBQ Sauce: +$1.99</option>
     </select>
-    <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
-    <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
 </div>
 
 <!-- checkbox  -->
@@ -463,24 +433,22 @@ article.left531 {font-size: 70%;}
 </div><!-- /pageOne -->
 
 <!-- //////////////////////////////////////-->
-<div id="billingList" style="display: none;">
+<div id="billingList"  class="hidden">
 <!-- ====BILLING LIST===63===== style="display: none;" =============== -->
 
 <p>Please fill your credit card billing details thoughtfully:</p>
 <h3>Billing Details</h3>
 <!-- //////////////////////////////////////// -->
 <!-- ==== start FORM ============================= -->
-<!-- <form action="finished.html" method="get" id="billing_form" class="needs-validation" novalidate> -->
+
     <form action="finished.html" method="get" id="billing_form">
 
     <div class="form-group">
         <label for="f-name">Name on Card</label>
-        <span id='invalid-n' ><i class="far fa-thumbs-down right"></i></span>
-        <span id='valid-n' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
+        <span id='invalid-f-n' ><i class="far fa-thumbs-down right"></i></span>
+        <span id='valid-f-n' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
         <input type="text" class="form-control" id="f-name" placeholder="Enter the name as displaed on card" name="f-name" required>
-        <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
-        <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
-        <p id="nova-name" style="color: red;"></p>   <p id="va-name"  class="green"></p>
+        <p id="nova-fname" ></p>   <p id="va-name"  class="green"></p>
     </div>
 
     <!-- 612020 -->
@@ -489,8 +457,7 @@ article.left531 {font-size: 70%;}
         <span id='invalid-card' ><i class="far fa-thumbs-down right"></i></span>
         <span id='valid-card' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
         <input type="text" class="form-control mb-4" id="ucard" placeholder=" 1111 1111 1111 1111" name="ucard" required>
-        <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
-            <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div><p id="nova-card"  style="color: red;"></p>
+            <p id="nova-card"  style="color: red;"></p>
             <p id="va-card"  class="green"></p>       
     </div>
     
@@ -499,8 +466,6 @@ article.left531 {font-size: 70%;}
         <span id='invalid-cvc' ><i class="far fa-thumbs-down right"></i></span>
         <span id='valid-cvc' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
         <input type="text" class="form-control mb-4" id="ucvc" placeholder="111" name="ucvc" required>
-        <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
-        <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
         <p id="nova-cvc"   style="color: red;"></p>
         <p id="va-cvc"  class="green"></p>
     </div>
@@ -509,8 +474,6 @@ article.left531 {font-size: 70%;}
     
         <div class="row">
           <div class="col-5">
-            <!-- <input type="text" class="form-control" id="expMonth" placeholder="Expiration month" name="expMonth"> -->
-    <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
     <span id='invalid-em'><i class="far fa-thumbs-down right"></i></span>
     <span id='valid-em' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <select class="form-control" id="exp-month">
@@ -528,14 +491,11 @@ article.left531 {font-size: 70%;}
         <option>11</option>
         <option>12</option>
     </select>
-    <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
-    <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
     <p id="nova-mo"   style="color: red;"></p>
     <p id="va-mo"  class="green"></p>
           </div>
 
           <div class="col-5">
-    <div class="valid-feedback">Valid.<i class="far fa-thumbs-up"></i></div>
     <span id='invalid-ey'><i class="far fa-thumbs-down right"></i></span>
     <span id='valid-ey' class="hidden"><i class="far fa-thumbs-up right green"></i></span>
     <select class="form-control" id="exp-year">
@@ -549,10 +509,7 @@ article.left531 {font-size: 70%;}
       <option>2027</option>
       <option>2028</option>
       <option>2029</option>     
-    </select>
-
-    <div class="invalid-feedback">Please fill out this field.<i class="far fa-thumbs-down "></i></div>
-    </div>
+    </select>   
     <p id="nova-ye"  style="color: red;"></p>
     <p id="va-ye"  class="green"></p>
         </div>
@@ -566,7 +523,7 @@ article.left531 {font-size: 70%;}
 
 <!-- //////////////////////////////////////-->
 <!-- ==FINISHIN PAGE======================= -->
-<div id="finishingPage" style="display: none;">
+<div id="finishingPage" class="hidden">
 
 <hr><hr>
    <p> <u> Your order will be ready shortly</u></p> 
